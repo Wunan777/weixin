@@ -1,0 +1,27 @@
+.title {
+    padding: 2px 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.content {
+    border-bottom: 1px solid #eee;
+    padding: 20px 16px 10px 16px;
+}
+
+.page-title {
+    font-size: 18px;
+    text-align: center;
+}
+
+.page p:nth-of-type(1) {
+    margin-top: 10px;
+}
+.page p {
+    text-indent: 2em;
+}
+
+.type-title {
+    font-size: 16px;
+    text-indent: 24px;
+}

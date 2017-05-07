@@ -1,0 +1,29 @@
+<div class="person-info">
+    <div class="title">
+        我的成绩
+    </div>
+
+    <div class="content">
+        <div class="container">
+
+            <div class="row" v-for="(value, key) in grade">
+
+                <div class="col-xs-6">
+                    <strong class="info-item">
+                        {{ key }} ：
+                    </strong>
+                </div>
+                <div class="col-xs-6">
+                    {{ value }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="test-info">
+                    有 {{ info['testNum' ]}} 门已通过，有 {{ info['failNum'] }} 门未通过，有 {{ info['noTestNum']}} 门尚未考试。
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

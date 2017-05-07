@@ -1,0 +1,24 @@
+<div class="person-info">
+    <div class="title">
+        我的学习进度
+    </div>
+
+    <div class="content">
+        <div class="container">
+
+            <div class="row" v-for="(value, key) in progress">
+
+                <div class="col-xs-6">
+                    <strong class="info-item">
+                        {{ dict[key] }} ：
+                    </strong>
+                </div>
+                <div class="col-xs-6">
+                    {{ value }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

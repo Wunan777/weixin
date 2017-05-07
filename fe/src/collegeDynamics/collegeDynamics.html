@@ -1,0 +1,41 @@
+<div class="college-dynamics">
+    <div class="title">
+        学院动态
+    </div>
+
+    <div class="content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-8">
+                    新闻标题
+                </div>
+                <div class="col-xs-4">
+                    时间
+                </div>
+            </div>
+
+            <div class="row new" v-for="item in news">
+
+                <div class="col-xs-8">
+                    <a :href="item.url">
+                        {{ item.title }}
+                    </a>
+                </div>
+
+                <div class="col-xs-4">
+                    {{ item.time }}
+                </div>
+            </div>
+
+            <div class="row more">
+                <div class="col-xs-12">
+                    <a href="http://www.edlut.com/mobile.php/NewsState/getArticle/item_id/92/if_ShowList/1/" class="btn btn-info">
+                        更多新闻
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

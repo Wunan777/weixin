@@ -1,0 +1,34 @@
+<div class="person-info">
+    <div class="title">
+        我的考场
+    </div>
+
+    <div class="content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-6">
+                    时间
+                </div>
+                <div class="col-xs-6">
+                    考点
+                </div>
+            </div>
+
+            <div class="row" v-for="item in room">
+
+                <div class="col-xs-6">
+                    <strong>
+                        {{ item.time }}
+                    </strong>
+                </div>
+
+                <div class="col-xs-6">
+                    {{ item.region }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

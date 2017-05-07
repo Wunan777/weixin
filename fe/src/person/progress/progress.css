@@ -1,0 +1,17 @@
+.title {
+    padding: 2px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+}
+
+.content {
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.content .info-item {
+    float: right;
+}
+.content .row {
+    margin: 8px 0;
+}

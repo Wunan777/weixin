@@ -1,0 +1,118 @@
+<div class="college-dynamics">
+    <div class="title">
+        立即报名
+    </div>
+
+    <div class="content">
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    省份
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <select class="form-control" v-model="selected.province">
+                        <option v-for="option in province" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    城市
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <select class="form-control">
+                        <option>大连</option>
+                        <option>济南</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    学习中心
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <select class="form-control">
+                        <option>开发区</option>
+                        <option>其它</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    层次
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    专业
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <select class="form-control">
+                        <option>数学</option>
+                        <option>软件</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    姓名
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" placeholder="请输入姓名">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    联系方式
+                    <span class="necessary">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" placeholder="请输入手机号">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <button v-if="isAllSelected" type="button" class="btn btn-success btn-block">
+            提交
+        </button>
+        <button v-else="isAllSelected" type="button" class="btn disabled btn-block">
+            提交
+        </button>
+    </div>
+
+</div>
