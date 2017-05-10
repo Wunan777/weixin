@@ -15,7 +15,9 @@ module.exports = {
         'personinfo': path.resolve(__dirname, './fe/src/person/info/info.js'),
         'personprogress': path.resolve(__dirname, './fe/src/person/progress/progress.js'),
         'persongrade': path.resolve(__dirname, './fe/src/person/grade/grade.js'),
-        'personroom': path.resolve(__dirname, './fe/src/person/room/room.js')
+        'personroom': path.resolve(__dirname, './fe/src/person/room/room.js'),
+        'weixinBind': path.resolve(__dirname, './fe/src/weixinBind/weixinBind.js'),
+        'weixinBindUpdate': path.resolve(__dirname, './fe/src/weixinBindUpdate/weixinBindUpdate.js')
     },
     output: {
         path: path.resolve(__dirname, './fe/js/'),

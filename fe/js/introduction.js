@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(47);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2196,13 +2196,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 35:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _introduction = __webpack_require__(23);
+var _introduction = __webpack_require__(25);
 
 var _introduction2 = _interopRequireDefault(_introduction);
 
@@ -2228,21 +2228,6 @@ var toString = {}.toString;
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
-
-
-/***/ }),
-
-/***/ 47:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.page-title {\n    font-size: 18px;\n    text-align: center;\n}\n\n.page p:nth-of-type(1) {\n    margin-top: 10px;\n}\n.page p {\n    text-indent: 24px;\n}", ""]);
-
-// exports
 
 
 /***/ }),
@@ -2496,6 +2481,21 @@ function updateLink(linkElement, obj) {
 	if(oldSrc)
 		URL.revokeObjectURL(oldSrc);
 }
+
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.page-title {\n    font-size: 18px;\n    text-align: center;\n}\n\n.page p:nth-of-type(1) {\n    margin-top: 10px;\n}\n.page p {\n    text-indent: 24px;\n}", ""]);
+
+// exports
 
 
 /***/ }),

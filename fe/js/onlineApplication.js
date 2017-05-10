@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(49);
+var content = __webpack_require__(55);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2196,13 +2196,25 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 37:
+/***/ 4:
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _onlineApplication = __webpack_require__(25);
+var _onlineApplication = __webpack_require__(27);
 
 var _onlineApplication2 = _interopRequireDefault(_onlineApplication);
 
@@ -2236,33 +2248,6 @@ var app = new Vue({
     },
     template: _onlineApplication4.default
 });
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -2515,6 +2500,21 @@ function updateLink(linkElement, obj) {
 	if(oldSrc)
 		URL.revokeObjectURL(oldSrc);
 }
+
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}", ""]);
+
+// exports
 
 
 /***/ }),

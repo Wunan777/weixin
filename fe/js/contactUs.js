@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 36);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,13 +2071,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 20:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(44);
+var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2189,13 +2189,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 32:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _contactUs = __webpack_require__(20);
+var _contactUs = __webpack_require__(22);
 
 var _contactUs2 = _interopRequireDefault(_contactUs);
 
@@ -2221,21 +2221,6 @@ var toString = {}.toString;
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
-
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 10px 40px 10px 60px;\n}\n\n.content div {\n    margin: 10px 0;\n}\n", ""]);
-
-// exports
 
 
 /***/ }),
@@ -2489,6 +2474,21 @@ function updateLink(linkElement, obj) {
 	if(oldSrc)
 		URL.revokeObjectURL(oldSrc);
 }
+
+
+/***/ }),
+
+/***/ 50:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 10px 40px 10px 60px;\n}\n\n.content div {\n    margin: 10px 0;\n}\n", ""]);
+
+// exports
 
 
 /***/ }),
