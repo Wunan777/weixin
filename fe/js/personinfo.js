@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 15:
+/***/ 16:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的信息\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in info\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ dict[key] }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value }}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
@@ -2075,33 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(57);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./info.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./info.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
@@ -2196,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 31:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(62);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./info.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./info.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2208,17 +2208,17 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _info = __webpack_require__(29);
+var _info = __webpack_require__(31);
 
 var _info2 = _interopRequireDefault(_info);
 
-var _info3 = __webpack_require__(15);
+var _info3 = __webpack_require__(16);
 
 var _info4 = _interopRequireDefault(_info3);
 
@@ -2504,21 +2504,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 57:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2543,6 +2528,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
+
+// exports
 
 
 /***/ })

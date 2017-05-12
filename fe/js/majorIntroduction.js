@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 40);
+/******/ 	return __webpack_require__(__webpack_require__.s = 42);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(54);
+var content = __webpack_require__(58);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2208,13 +2208,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 40:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _majorIntroduction = __webpack_require__(26);
+var _majorIntroduction = __webpack_require__(27);
 
 var _majorIntroduction2 = _interopRequireDefault(_majorIntroduction);
 
@@ -2484,7 +2484,7 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 54:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

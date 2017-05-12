@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 20:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"weixin-bind\">\n    <div class=\"title\">\n        <strong>\n            网教学生平台账号与微信公众号修改\n        </strong>\n    </div>\n\n    <div class=\"form-horizontal\" role=\"form\">\n      <div class=\"form-group\">\n        <label for=\"firstname\" class=\"col-xs-2 control-label\">账号</label>\n        <div class=\"col-xs-10\">\n          <input type=\"text\" class=\"form-control\" id=\"account\" placeholder=\"请输入网教学生平台账号\" v-model=\"account\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"lastname\" class=\"col-xs-2 control-label\">密码</label>\n        <div class=\"col-xs-10\">\n          <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"请输入网教学生平台密码\" v-model=\"password\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n\n        <div class=\"col-xs-8\">\n            <div v-if=\"resErr == '0'\" class=\"success\">\n                {{ tip }}\n            </div>\n            <div v-else class=\"error\">\n                {{ tip }}\n            </div>\n        </div>\n\n        <div class=\"col-xs-4\">\n\n            <div v-if=\"!submiting && account && password && resErr != '0'\" class=\"btn btn-success submit\" @click=\"submit\">\n                确认修改\n            </div>\n            <div v-else class=\"btn btn-default submit\">\n                确认修改\n            </div>\n\n        </div>\n\n      </div>\n\n\n    </div>\n\n</div>";
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 34:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(62);
+var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,84 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _weixinBindUpdate = __webpack_require__(34);
-
-var _weixinBindUpdate2 = _interopRequireDefault(_weixinBindUpdate);
-
-var _weixinBindUpdate3 = __webpack_require__(20);
-
-var _weixinBindUpdate4 = _interopRequireDefault(_weixinBindUpdate3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        account: '',
-        password: '',
-        openId: '',
-        resErr: -1,
-        tip: '',
-        submiting: false
-    },
-    mounted: function mounted() {
-
-        var me = this;
-        var search = window.location.search;
-        var openIdStr = search.split('&')[0];
-        me.openId = openIdStr.split('=')[1];
-    },
-    methods: {
-        submit: function submit() {
-            var me = this;
-            me.submiting = true;
-
-            $.ajax({
-                url: '/weixinBindUpdate',
-                type: 'post',
-                data: {
-                    account: $.trim(me.account),
-                    password: $.trim(me.password),
-                    openId: $.trim(me.openId)
-                },
-                success: function success(res) {
-                    console.log(res);
-
-                    var msg = res.msg;
-                    var err = res.err;
-
-                    if (err == '0') {
-                        if (res.data.data.nModified > 0) {
-                            msg = '微信号重新绑定，请返回到公众号主页重新查询！';
-                        } else {
-                            msg = '微信号重新绑定失败，请确认是否更换新的账号！';
-                            err = 4;
-                        }
-                    }
-
-                    me.resErr = err;
-                    me.tip = msg;
-                    me.submiting = false;
-                },
-                error: function error(err) {
-                    console.log('error!');
-                    console.log(err);
-                    me.submiting = false;
-                }
-            });
-        }
-    },
-    template: _weixinBindUpdate4.default
-});
 
 /***/ }),
 
@@ -2539,6 +2461,84 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 52:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _weixinBindUpdate = __webpack_require__(36);
+
+var _weixinBindUpdate2 = _interopRequireDefault(_weixinBindUpdate);
+
+var _weixinBindUpdate3 = __webpack_require__(21);
+
+var _weixinBindUpdate4 = _interopRequireDefault(_weixinBindUpdate3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        account: '',
+        password: '',
+        openId: '',
+        resErr: -1,
+        tip: '',
+        submiting: false
+    },
+    mounted: function mounted() {
+
+        var me = this;
+        var search = window.location.search;
+        var openIdStr = search.split('&')[0];
+        me.openId = openIdStr.split('=')[1];
+    },
+    methods: {
+        submit: function submit() {
+            var me = this;
+            me.submiting = true;
+
+            $.ajax({
+                url: '/weixinBindUpdate',
+                type: 'post',
+                data: {
+                    account: $.trim(me.account),
+                    password: $.trim(me.password),
+                    openId: $.trim(me.openId)
+                },
+                success: function success(res) {
+                    console.log(res);
+
+                    var msg = res.msg;
+                    var err = res.err;
+
+                    if (err == '0') {
+                        if (res.data.data.nModified > 0) {
+                            msg = '微信号重新绑定，请返回到公众号主页重新查询！';
+                        } else {
+                            msg = '微信号重新绑定失败，请确认是否更换新的账号！';
+                            err = 4;
+                        }
+                    }
+
+                    me.resErr = err;
+                    me.tip = msg;
+                    me.submiting = false;
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                    me.submiting = false;
+                }
+            });
+        }
+    },
+    template: _weixinBindUpdate4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2567,7 +2567,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 62:
+/***/ 67:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

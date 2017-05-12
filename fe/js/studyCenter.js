@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 18:
+/***/ 19:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"study-center\">\n    <div class=\"title\">\n        学习中心查询\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.province\">\n                        <option v-for=\"option in province\" v-bind:value=\"option.value\">\n                            {{ option.text }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    城市\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>大连</option>\n                        <option>济南</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"result-wrapper\">\n        <ul class=\"list-group\">\n            <li v-for=\"item in resultList\" class=\"list-group-item\">\n                {{ item.text }}\n            </li>\n        </ul>\n    </div>\n</div>\n";
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 32:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(60);
+var content = __webpack_require__(65);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,57 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _studyCenter = __webpack_require__(32);
-
-var _studyCenter2 = _interopRequireDefault(_studyCenter);
-
-var _studyCenter3 = __webpack_require__(18);
-
-var _studyCenter4 = _interopRequireDefault(_studyCenter3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        selected: {
-            province: 1
-        },
-        province: [{
-            text: '辽宁',
-            value: '1'
-        }, {
-            text: '山东',
-            value: '2'
-        }],
-        city: [{
-            text: '北京',
-            value: '1'
-        }, {
-            text: '大连',
-            value: '2'
-        }],
-        resultList: [{
-            text: '开发区校区'
-        }, {
-            text: '主校区校区'
-        }, {
-            text: '开发区校区1'
-        }, {
-            text: '开发区校区2'
-        }]
-    },
-    template: _studyCenter4.default
-});
 
 /***/ }),
 
@@ -2512,6 +2461,57 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 50:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _studyCenter = __webpack_require__(34);
+
+var _studyCenter2 = _interopRequireDefault(_studyCenter);
+
+var _studyCenter3 = __webpack_require__(19);
+
+var _studyCenter4 = _interopRequireDefault(_studyCenter3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        selected: {
+            province: 1
+        },
+        province: [{
+            text: '辽宁',
+            value: '1'
+        }, {
+            text: '山东',
+            value: '2'
+        }],
+        city: [{
+            text: '北京',
+            value: '1'
+        }, {
+            text: '大连',
+            value: '2'
+        }],
+        resultList: [{
+            text: '开发区校区'
+        }, {
+            text: '主校区校区'
+        }, {
+            text: '开发区校区1'
+        }, {
+            text: '开发区校区2'
+        }]
+    },
+    template: _studyCenter4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2540,7 +2540,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 60:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

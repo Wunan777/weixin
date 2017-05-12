@@ -3,6 +3,14 @@
 var MongoClient = require('mongodb').MongoClient;
 var DB_CONN_STR = 'mongodb://localhost:27017/weixin';
 
+// 可以插入的表名
+var tableNameConfig = {
+    'WeixinBindList': '1',
+    'Pv': '1',
+    'Uv': '1',
+    'Aggregation': '1'
+};
+
 exports.insert = function (tableName, arr, opCallback) {
 
     // 插入返回状态码
@@ -13,12 +21,12 @@ exports.insert = function (tableName, arr, opCallback) {
 
     if (tableName && arr instanceof Array && arr.length > 0) {
 
-        if (tableName === 'WeixinBindList') {
+        if (tableNameConfig[tableName]) {
             MongoClient.connect(DB_CONN_STR, function(err, db) {
                 console.log("mongo连接成功！");
 
                 insertData({
-                    tableName: 'WeixinBindList',
+                    tableName: tableName,
                     data: arr,
                     db: db,
                     success: function(result) {
@@ -34,7 +42,7 @@ exports.insert = function (tableName, arr, opCallback) {
 
         }
         else {
-            opCallback({'err': 2, 'msg': '插入的表名无效！'});
+            opCallback({'err': 2, 'msg': '该表不允许插入！'});
         }
 
     }

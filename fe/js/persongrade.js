@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in grade\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ key }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    有 {{ info['testNum' ]}} 门已通过，有 {{ info['failNum'] }} 门未通过，有 {{ info['noTestNum']}} 门尚未考试。\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>";
@@ -2075,33 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(56);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./grade.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./grade.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
@@ -2196,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(61);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./grade.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./grade.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2208,17 +2208,17 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 42:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _grade = __webpack_require__(28);
+var _grade = __webpack_require__(30);
 
 var _grade2 = _interopRequireDefault(_grade);
 
-var _grade3 = __webpack_require__(14);
+var _grade3 = __webpack_require__(15);
 
 var _grade4 = _interopRequireDefault(_grade3);
 
@@ -2496,21 +2496,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 56:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}\n\n.test-info {\n    border-top: 1px solid #eee;\n    margin: 8px 80px 0px 80px;\n    padding: 10px;\n    text-align: center;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2535,6 +2520,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 61:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}\n\n.test-info {\n    border-top: 1px solid #eee;\n    margin: 8px 80px 0px 80px;\n    padding: 10px;\n    text-align: center;\n}", ""]);
+
+// exports
 
 
 /***/ })

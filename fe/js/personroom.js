@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 17:
+/***/ 18:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的考场\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-6\">\n                    时间\n                </div>\n                <div class=\"col-xs-6\">\n                    考点\n                </div>\n            </div>\n\n            <div class=\"row\" v-for=\"item in room\">\n\n                <div class=\"col-xs-6\">\n                    <strong>\n                        {{ item.time }}\n                    </strong>\n                </div>\n\n                <div class=\"col-xs-6\">\n                    {{ item.region }}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 31:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(59);
+var content = __webpack_require__(64);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2208,17 +2208,17 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 45:
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _room = __webpack_require__(31);
+var _room = __webpack_require__(33);
 
 var _room2 = _interopRequireDefault(_room);
 
-var _room3 = __webpack_require__(17);
+var _room3 = __webpack_require__(18);
 
 var _room4 = _interopRequireDefault(_room3);
 
@@ -2493,21 +2493,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 59:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2532,6 +2517,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
+
+// exports
 
 
 /***/ })

@@ -1,0 +1,23 @@
+.title {
+    margin: 10px 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+.sub-title {
+    font-size: 14px;
+    color: #bcbcbc;
+}
+
+#pv-graph {
+    height: 300px;
+}
+
+#uv-graph {
+    height: 300px;
+}
+
+.graph-wrapper {
+    border: 1px solid #eee;
+    border-radius: 2px;
+    padding: 10px;
+}

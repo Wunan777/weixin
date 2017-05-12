@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,13 +2071,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 21:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(49);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2189,13 +2189,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 35:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _collegeDynamics = __webpack_require__(21);
+var _collegeDynamics = __webpack_require__(22);
 
 var _collegeDynamics2 = _interopRequireDefault(_collegeDynamics);
 
@@ -2211,23 +2211,23 @@ var app = new Vue({
         news: [{
             title: '远程与继续教育学院开设“数控机床开放式众创”公开微课程',
             time: '2017-04-26',
-            url: 'http://www.edlut.com/NewsState/showContent/a_id/2417/'
+            url: 'http://www.edlut.com/mobile.php/NewsState/getcontent/article_id/2417/'
         }, {
             title: '学院2017年春季学期毕业论文答辩工作顺利完成',
             time: '2017-04-26',
-            url: 'http://www.edlut.com/NewsState/showContent/a_id/2418/'
+            url: 'http://www.edlut.com/mobile.php/NewsState/getcontent/article_id/2418/'
         }, {
             title: '培训中心举办“全民健身工作理论与实践专题培训班”',
             time: '2017-04-25',
-            url: 'http://www.edlut.com/NewsState/showContent/a_id/2416/'
+            url: 'http://www.edlut.com/mobile.php/NewsState/getcontent/article_id/2416/'
         }, {
             title: '培训中心举办“柳州市鱼峰区、阳和工业新区财税骨干综合素质提升班”',
             time: '2017-04-07',
-            url: 'http://www.edlut.com/NewsState/showContent/a_id/2422/'
+            url: 'http://www.edlut.com/mobile.php/NewsState/getcontent/article_id/2422/'
         }, {
             title: '第二期大连市农业职业经理人认证培训班圆满结束',
             time: '2017-04-06',
-            url: 'http://www.edlut.com/NewsState/showContent/a_id/2411/'
+            url: 'http://www.edlut.com/mobile.php/NewsState/getcontent/article_id/2411/if_ShowList/0/'
         }]
     },
     template: _collegeDynamics4.default
@@ -2243,21 +2243,6 @@ var toString = {}.toString;
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
-
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.new {\n    margin-top: 14px;\n}\n\n.more {\n    text-align: center;\n    margin-top: 20px;\n    color: #3d3d3d;\n}", ""]);
-
-// exports
 
 
 /***/ }),
@@ -2511,6 +2496,21 @@ function updateLink(linkElement, obj) {
 	if(oldSrc)
 		URL.revokeObjectURL(oldSrc);
 }
+
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.new {\n    margin-top: 14px;\n}\n\n.more {\n    text-align: center;\n    margin-top: 20px;\n    color: #3d3d3d;\n}", ""]);
+
+// exports
 
 
 /***/ }),

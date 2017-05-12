@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"college-dynamics\">\n    <div class=\"title\">\n        立即报名\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.province\">\n                        <option v-for=\"option in province\" v-bind:value=\"option.value\">\n                            {{ option.text }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    城市\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>大连</option>\n                        <option>济南</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    学习中心\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>开发区</option>\n                        <option>其它</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    层次\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>1</option>\n                        <option>2</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    专业\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>数学</option>\n                        <option>软件</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    姓名\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"请输入姓名\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    联系方式\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"请输入手机号\">\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n    <div class=\"footer\">\n        <button v-if=\"isAllSelected\" type=\"button\" class=\"btn btn-success btn-block\">\n            提交\n        </button>\n        <button v-else=\"isAllSelected\" type=\"button\" class=\"btn disabled btn-block\">\n            提交\n        </button>\n    </div>\n\n</div>\n";
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(55);
+var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2208,17 +2208,17 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 41:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _onlineApplication = __webpack_require__(27);
+var _onlineApplication = __webpack_require__(29);
 
 var _onlineApplication2 = _interopRequireDefault(_onlineApplication);
 
-var _onlineApplication3 = __webpack_require__(13);
+var _onlineApplication3 = __webpack_require__(14);
 
 var _onlineApplication4 = _interopRequireDefault(_onlineApplication3);
 
@@ -2504,21 +2504,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 55:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2543,6 +2528,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}", ""]);
+
+// exports
 
 
 /***/ })
