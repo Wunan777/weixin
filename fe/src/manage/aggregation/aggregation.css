@@ -8,11 +8,15 @@
     color: #bcbcbc;
 }
 
-#pv-graph {
+#age-graph {
     height: 300px;
 }
 
-#uv-graph {
+#level-graph {
+    height: 300px;
+}
+
+#status-graph {
     height: 300px;
 }
 

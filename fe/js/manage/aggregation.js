@@ -2205,6 +2205,7 @@ var app = new Vue({
     methods: {
         init: function init() {
             var me = this;
+            var container = $(me.$el);
             $.ajax({
                 url: 'getAggregation',
                 type: 'post',
@@ -2212,9 +2213,13 @@ var app = new Vue({
                 success: function success(res) {
                     if (res.err == '0') {
                         console.log(res);
-                        $.each(res, function (index, ele) {
+                        var arr = res.data;
+                        $.each(arr, function (index, ele) {
                             me[ele.key] = ele.data;
                         });
+                        me.createAge(me['studentAge']);
+                        me.createLevel(me['studentLevel']);
+                        me.createStatus(me['studentStatus']);
                     } else {
                         console.log('error!');
                         console.log(res.msg);
@@ -2222,7 +2227,115 @@ var app = new Vue({
                 }
             });
         },
-        createQuery: function createQuery() {}
+        createAge: function createAge(data) {
+            var me = this;
+            var container = $(me.$el);
+            var ageXArr = [];
+            var ageYArr = [];
+            $.each(data, function (key, value) {
+                if (key != '40' && key != '50') {
+                    var name = key + '后';
+                    ageXArr.push(name);
+                    ageYArr.push({
+                        name: name,
+                        value: value
+                    });
+                }
+            });
+
+            me.createPieGraph(ageXArr, ageYArr, container.find('#age-graph')[0], '学员年龄信息统计');
+        },
+        createLevel: function createLevel(data) {
+            var me = this;
+            var container = $(me.$el);
+            var levelXArr = [];
+            var levelYArr = [];
+
+            $.each(data, function (key, value) {
+                console.log(key);
+                if (key === 'gqz') {
+                    var name = '高起专';
+                } else if (key === 'zsb') {
+                    var name = '专升本';
+                }
+                levelXArr.push(name);
+                levelYArr.push({
+                    name: name,
+                    value: value
+                });
+            });
+
+            me.createPieGraph(levelXArr, levelYArr, container.find('#level-graph')[0], '学员Level统计');
+        },
+        createStatus: function createStatus(data) {
+            var me = this;
+            var container = $(me.$el);
+            var xArr = [];
+            var yArr = [];
+
+            $.each(data, function (key, value) {
+
+                var name = key;
+                if (key === 'grduate') {
+                    name = '毕业生';
+                } else if (key === 'undergrduate') {
+                    name = '在读生';
+                } else if (key === 'cancel') {
+                    name = '取消学籍';
+                } else if (key === 'exit') {
+                    name = '退学';
+                }
+
+                xArr.push(name);
+                yArr.push({
+                    name: name,
+                    value: value
+                });
+            });
+
+            me.createPieGraph(xArr, yArr, container.find('#status-graph')[0], '学员学籍状态统计');
+        },
+        createPieGraph: function createPieGraph(xArr, yArr, dom, title) {
+            var me = this;
+            var echartInstance = echarts.init(dom);
+
+            var option = {
+                title: {
+                    text: title,
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: {
+                            show: true,
+                            type: ['pie', 'funnel']
+                        },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                legend: {
+                    x: 'center',
+                    y: 'bottom',
+                    data: xArr
+                },
+                series: [{
+                    type: 'pie',
+                    radius: [30, 110],
+                    roseType: 'area',
+                    data: yArr
+                }]
+            };
+            echartInstance.setOption(option);
+        }
     }
 });
 
@@ -2512,7 +2625,7 @@ module.exports = g;
 /***/ 68:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            <small>截止到2017年5月</small>\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"uv-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
+module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2551,7 +2664,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#pv-graph {\n    height: 300px;\n}\n\n#uv-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
+exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#age-graph {\n    height: 300px;\n}\n\n#level-graph {\n    height: 300px;\n}\n\n#status-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
 
 // exports
 
