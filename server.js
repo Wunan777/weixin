@@ -9,11 +9,11 @@ var WechatAPI = require('wechat-api');
 
 
 var util = require('./libs/util');
-var wechat_file = path.join(__dirname, './config/wechat.txt');
 var route = require('./routes/index');
 
 var app = express();
 var wechatConfig = require('./config/wechat').config;
+var onlineAddress = require('./config/ipConfig').config.online;
 
 var menu = {
     "button": [
@@ -23,7 +23,7 @@ var menu = {
                 {
                     "type": "view",
                     "name": "平台微首页",
-                    "url": "http://wunan777.ngrok.cc/index"
+                    "url": onlineAddress + "/index"
                 }
             ]
         },
@@ -48,20 +48,15 @@ var menu = {
                 {
                     "type": "click",
                     "name": "我的学习进度",
-                    "key": "myProgress"
+                    "key": "myCredit"
                 }
             ]
         },
         {
+            "type": "view",
             "name": "联系我们",
-            "sub_button": [
-                {
-                    "type": "view",
-                    "name": "平台微首页",
-                    "url": "http://wunan777.ngrok.cc/index"
-                }
-            ]
-        },
+            "url": onlineAddress + "/contactUs"
+        }
     ]
 };
 

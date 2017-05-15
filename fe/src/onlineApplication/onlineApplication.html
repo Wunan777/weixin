@@ -7,29 +7,14 @@
         <div class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-xs-4 control-label">
-                    省份
+                    报考省份
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
                     <select class="form-control" v-model="selected.province">
-                        <option v-for="option in province" v-bind:value="option.value">
-                            {{ option.text }}
+                        <option v-for="option in provinceList" v-bind:value="option.id">
+                            {{ option.name }}
                         </option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-xs-4 control-label">
-                    城市
-                    <span class="necessary">*</span>
-                </label>
-                <div class="col-xs-8">
-                    <select class="form-control">
-                        <option>大连</option>
-                        <option>济南</option>
                     </select>
                 </div>
             </div>
@@ -42,9 +27,10 @@
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <select class="form-control">
-                        <option>开发区</option>
-                        <option>其它</option>
+                    <select class="form-control" v-model="selected.learnCenter">
+                        <option v-for="option in learnCenterList" v-bind:value="option.LC_ID">
+                            {{ option.LC_Name }}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -53,13 +39,12 @@
         <div class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-xs-4 control-label">
-                    层次
+                    报考层次
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
+                    <select class="form-control" v-model="selected.level">
+                        <option v-for="option in levelList" v-bind:value="option.value">{{ option.text }}</option>
                     </select>
                 </div>
             </div>
@@ -68,13 +53,12 @@
         <div class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-xs-4 control-label">
-                    专业
+                    报考专业
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <select class="form-control">
-                        <option>数学</option>
-                        <option>软件</option>
+                    <select class="form-control" v-model="selected.subject">
+                        <option v-for="option in subjectList" v-bind:value="option.name">{{ option.name }}</option>
                     </select>
                 </div>
             </div>
@@ -87,7 +71,7 @@
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" placeholder="请输入姓名">
+                    <input type="text" class="form-control" placeholder="请输入姓名" v-model="selected.name">
                 </div>
             </div>
         </div>
@@ -99,15 +83,23 @@
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" placeholder="请输入手机号">
+                    <input type="text" class="form-control" placeholder="请输入手机号" v-model="selected.tel">
                 </div>
             </div>
         </div>
 
+        <div class="tip">
+            <p v-if="err.code != 0" class="error">
+                {{ err.msg }}
+            </p>
+            <p v-else class="success">
+                {{ err.msg }}
+            </p>
+        </div>
     </div>
 
     <div class="footer">
-        <button v-if="isAllSelected" type="button" class="btn btn-success btn-block">
+        <button v-if="isAllSelected" type="button" class="btn btn-success btn-block" @click="submit">
             提交
         </button>
         <button v-else="isAllSelected" type="button" class="btn disabled btn-block">

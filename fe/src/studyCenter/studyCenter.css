@@ -1,3 +1,7 @@
+.study-center {
+    height: 100%;
+}
+
 .title {
     padding: 2px 10px;
     border-bottom: 1px solid #eee;
@@ -23,4 +27,9 @@
 
 .result-wrapper {
     padding: 0 10px 10px 10px;
+}
+
+.list-group {
+    height: 380px;
+    overflow-y: scroll;
 }

@@ -82,6 +82,77 @@ module.exports = function (app) {
 
     });
 
+    // 获取省信息
+    app.post('/studyCenter/province', function (req, res) {
+        mongodb.find(
+            'Province',
+            {},
+            function (provinceRes) {
+                if (provinceRes.err == '0') {
+                    res.send({
+                        data: provinceRes.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+                }
+                else {
+                    res.send({
+                        err: 1,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+            }
+        );
+    });
+
+    app.post('/studyCenter/learnCenter', function (req, res) {
+        mongodb
+        .find(
+            'Region',
+            {
+                'City_ID': req.body.cityId
+            },
+            function (learnCenterRes) {
+                if (learnCenterRes.err == '0') {
+                    res.send({
+                        data: learnCenterRes.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+                }
+                else {
+                    res.send({
+                        err: 1,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+            }
+        );
+    });
+
+    app.post('/studyCenter/subject', function (req, res) {
+        mongodb
+        .find(
+            'Subject',
+            {},
+            function (subjectRes) {
+                if (subjectRes.err == '0') {
+                    res.send({
+                        data: subjectRes.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+                }
+                else {
+                    res.send({
+                        err: 1,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+            }
+        );
+    });
+
     // 绑定微信号
     app.post('/weixinBind', function (req, weixinRes) {
 
@@ -176,7 +247,10 @@ module.exports = function (app) {
 
                 }
                 else {
-
+                    weixinRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
                 }
             }
         );

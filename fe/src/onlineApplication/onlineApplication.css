@@ -21,3 +21,16 @@
 .necessary {
     color: #e9391a;
 }
+
+.success {
+    color: #5cb85c;
+}
+
+.error {
+    color: #ea391a;
+}
+
+.tip p {
+    height: 20px;
+    margin: 0;
+}

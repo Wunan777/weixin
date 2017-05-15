@@ -26,13 +26,14 @@ module.exports = function (req, res, next) {
             if (eventKey === 'baseInfo'
                 || eventKey === 'myScore'
                 || eventKey === 'myRoom'
-                || eventKey === 'myProgress'
+                || eventKey === 'myCredit'
             ) {
 
                 // 检测是否账号是否绑定了微信号
 
                 var openid = message.FromUserName;
-                mongodb.find(
+                mongodb
+                .find(
                     'WeixinBindList',
                     {
                         'open_id': openid
@@ -48,61 +49,19 @@ module.exports = function (req, res, next) {
                                 // 根据openid 查询
                                 var studentId = response.data[0].student_id + '';
 
-                                mongodb.find(
-                                    'User',
-                                    {
-                                        'student_id': studentId
-                                    },
-                                    function (stuRes) {
-                                        console.log('这是stuRes 查询结果');
-                                        console.log('这是studentid ' +  studentId);
-                                        console.log(stuRes);
+                                if (eventKey === 'baseInfo') {
+                                    getBaseInfo(studentId, openid, res, mongodb);
+                                }
+                                else if (eventKey === 'myScore') {
+                                    getScore(studentId, openid, res, mongodb);
+                                }
+                                else if (eventKey === 'myRoom') {
+                                    getRoom(studentId, openid, res, mongodb);
+                                }
+                                else if (eventKey === 'myCredit') {
+                                    getCredit(studentId, openid, res, mongodb);
+                                }
 
-                                        if (stuRes.err == '0') {
-                                            if (stuRes.data.length > 0) {
-
-                                                var studentInfo = stuRes.data[0];
-                                                var encryptOpenid = cryption.enCryption(openid);
-                                                var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
-
-                                                var content = "平台信息"
-                                                    + "\n"
-                                                    + "姓名：" + studentInfo.name
-                                                    + "\n"
-                                                    + "专业：" + studentInfo.major
-                                                    + "\n"
-                                                    + "所在学习中心：" + studentInfo.center
-                                                    + "\n"
-                                                    + "大工学号：" + studentInfo.student_id
-                                                    + '\n'
-                                                    + "学籍状态：" + studentInfo.status
-                                                    + '\n'
-                                                    + "---------------"
-                                                    + "\n"
-                                                    + "系统检测到您已经绑定过，<a href='" + cancelUrl
-                                                    + "'>点击此处</a>取消或更改绑定信息";
-
-                                                res.reply({
-                                                    type: 'text',
-                                                    content: content
-                                                });
-
-                                            }
-                                            else {
-                                                res.reply({
-                                                    type: 'text',
-                                                    content: '数据库中无绑定学生信息。'
-                                                });
-                                            }
-                                        }
-                                        else {
-                                            res.reply({
-                                                type: 'text',
-                                                content: '查询过程中出错，请稍后重试。'
-                                            });
-                                        }
-                                    }
-                                );
                             }
                             else {
                                 // 未绑定，要跳转绑定页面
@@ -131,8 +90,21 @@ module.exports = function (req, res, next) {
                 );
 
             }
+            else {
+                res.reply({
+                    type: 'text',
+                    content: '未知点击事件！'
+                });
+            }
 
         }
+        else {
+            res.reply({
+                type: 'text',
+                content: '???'
+            });
+        }
+
     }
     else {
         if (message.Content === '1') {
@@ -158,4 +130,215 @@ module.exports = function (req, res, next) {
         }
     }
 
+}
+
+function getBaseInfo(studentId, openid, res, mongodb) {
+    mongodb
+    .find(
+        'User',
+        {
+            'student_id': studentId
+        },
+        function (stuRes) {
+            console.log('这是stuRes 查询结果');
+            console.log('这是studentid ' +  studentId);
+            console.log(stuRes);
+
+            if (stuRes.err == '0') {
+                if (stuRes.data.length > 0) {
+
+                    var studentInfo = stuRes.data[0];
+                    var encryptOpenid = cryption.enCryption(openid);
+                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+
+                    var content = "基本信息"
+                        + "\n"
+                        + "姓名：" + studentInfo.name
+                        + "\n"
+                        + "专业：" + studentInfo.major
+                        + "\n"
+                        + "所在学习中心：" + studentInfo.center
+                        + "\n"
+                        + "大工学号：" + studentInfo.student_id
+                        + '\n'
+                        + "学籍状态：" + studentInfo.status
+                        + '\n'
+                        + "---------------"
+                        + "\n"
+                        + "系统检测到您已经绑定过，<a href='" + cancelUrl
+                        + "'>点击此处</a>取消或更改绑定信息";
+
+                    res.reply({
+                        type: 'text',
+                        content: content
+                    });
+
+                }
+                else {
+                    res.reply({
+                        type: 'text',
+                        content: '数据库中无绑定学生信息。'
+                    });
+                }
+            }
+            else {
+                res.reply({
+                    type: 'text',
+                    content: '查询过程中出错，请稍后重试。'
+                });
+            }
+        }
+    );
+}
+
+function getScore(studentId, openid, res, mongodb) {
+    mongodb
+    .find(
+        'StudentScore',
+        {
+            'student_id': studentId
+        },
+        function (stuRes) {
+            console.log('这是stuRes 查询结果');
+            console.log('这是studentid ' +  studentId);
+            console.log(stuRes);
+
+            if (stuRes.err == '0') {
+                var content = '';
+                if (stuRes.data.length > 0) {
+
+                    var studentInfo = stuRes.data[0];
+                    var encryptOpenid = cryption.enCryption(openid);
+                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+
+                    var content = "成绩信息"
+                        + "\n"
+                        + "所有课加权分：" + studentInfo.avg_score
+                        + '\n'
+                        + "所有课绩点：" + studentInfo.gpa
+                        + '\n'
+                        + "---------------"
+                        + "\n"
+                        + "系统检测到您已经绑定过，<a href='" + cancelUrl
+                        + "'>点击此处</a>取消或更改绑定信息";
+
+                }
+                else {
+                    content = '抱歉，没有查到您的成绩信息。';
+                }
+
+                res.reply({
+                    type: 'text',
+                    content: content
+                });
+            }
+            else {
+                res.reply({
+                    type: 'text',
+                    content: '查询过程中出错，请稍后重试。'
+                });
+            }
+        }
+    );
+}
+
+function getRoom(studentId, openid, res, mongodb) {
+    mongodb
+    .find(
+        'StudentRoom',
+        {
+            'student_id': studentId
+        },
+        function (stuRes) {
+            console.log('这是stuRes 查询结果');
+            console.log('这是studentid ' +  studentId);
+            console.log(stuRes);
+
+            if (stuRes.err == '0') {
+                var content = '';
+                if (stuRes.data.length > 0) {
+                    var studentInfo = stuRes.data[0];
+                    var encryptOpenid = cryption.enCryption(openid);
+                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+
+                    content = "考试安排"
+                        + "考场：" + studentInfo.room
+                        + '\n'
+                        + "时间：" + studentInfo.time
+                        + '\n'
+                        + "---------------"
+                        + "\n"
+                        + "系统检测到您已经绑定过，<a href='" + cancelUrl
+                        + "'>点击此处</a>取消或更改绑定信息";
+                }
+                else {
+                    content = '近期暂无考试安排。';
+                }
+
+                res.reply({
+                    type: 'text',
+                    content: content
+                });
+
+            }
+            else {
+                res.reply({
+                    type: 'text',
+                    content: '查询过程中出错，请稍后重试。'
+                });
+            }
+        }
+    );
+}
+
+function getCredit(studentId, openid, res, mongodb) {
+    mongodb
+    .find(
+        'StudentCredit',
+        {
+            'student_id': studentId
+        },
+        function (stuRes) {
+            console.log('这是stuRes 查询结果');
+            console.log('这是studentid ' +  studentId);
+            console.log(stuRes);
+
+
+            if (stuRes.err == '0') {
+                var content = '';
+                if (stuRes.data.length > 0) {
+
+                    var studentInfo = stuRes.data[0];
+                    var encryptOpenid = cryption.enCryption(openid);
+                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+
+                    content = "学习进度"
+                        + "\n"
+                        + "实际已获得：" + studentInfo.get_credit
+                        + '\n'
+                        + "毕业要求学分：" + studentInfo.need_credit
+                        + '\n'
+                        + "---------------"
+                        + "\n"
+                        + "系统检测到您已经绑定过，<a href='" + cancelUrl
+                        + "'>点击此处</a>取消或更改绑定信息";
+
+                }
+                else {
+                    content = '抱歉，没有查到您的学习进度。';
+                }
+
+                res.reply({
+                    type: 'text',
+                    content: content
+                });
+            }
+            else {
+                res.reply({
+                    type: 'text',
+                    content: '查询过程中出错，请稍后重试。'
+                });
+            }
+        }
+    );
 }

@@ -1,0 +1,1 @@
+exports.a = [{LC_ID: "1095", City_ID: "12", LC_Name: "奥鹏远程教育长春学习中心", Authorized: "1", Custodian: "杨骐光"}];

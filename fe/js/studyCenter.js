@@ -1991,7 +1991,7 @@ function isnan (val) {
 /***/ 19:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"study-center\">\n    <div class=\"title\">\n        学习中心查询\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.province\">\n                        <option v-for=\"option in province\" v-bind:value=\"option.value\">\n                            {{ option.text }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    城市\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\">\n                        <option>大连</option>\n                        <option>济南</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"result-wrapper\">\n        <ul class=\"list-group\">\n            <li v-for=\"item in resultList\" class=\"list-group-item\">\n                {{ item.text }}\n            </li>\n        </ul>\n    </div>\n</div>\n";
+module.exports = "<div class=\"study-center\">\n    <div class=\"title\">\n        学习中心查询\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"province\">\n                        <option v-for=\"option in provinceList\" v-bind:value=\"option.id\">\n                            {{ option.name }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n    <div class=\"result-wrapper\">\n        <ul class=\"list-group\">\n            <li v-for=\"item in learnCenterList\" class=\"list-group-item\">\n                {{ item.LC_Name }}\n            </li>\n        </ul>\n    </div>\n</div>\n";
 
 /***/ }),
 
@@ -2480,34 +2480,50 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = new Vue({
     el: '#app',
     data: {
-        selected: {
-            province: 1
-        },
-        province: [{
-            text: '辽宁',
-            value: '1'
-        }, {
-            text: '山东',
-            value: '2'
-        }],
-        city: [{
-            text: '北京',
-            value: '1'
-        }, {
-            text: '大连',
-            value: '2'
-        }],
-        resultList: [{
-            text: '开发区校区'
-        }, {
-            text: '主校区校区'
-        }, {
-            text: '开发区校区1'
-        }, {
-            text: '开发区校区2'
-        }]
+        province: '-1',
+        provinceList: [],
+        learnCenterList: []
     },
-    template: _studyCenter4.default
+    mounted: function mounted() {
+        var me = this;
+        me.init();
+    },
+    template: _studyCenter4.default,
+    methods: {
+        init: function init() {
+            var me = this;
+            $.ajax({
+                url: '/studyCenter/province',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    me.provinceList = res.data;
+                    me.province = me.provinceList[0]['id'];
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        }
+    },
+    watch: {
+        province: function province(newVal, oldVal) {
+            var me = this;
+            $.ajax({
+                url: '/studyCenter/learnCenter',
+                type: 'post',
+                data: {
+                    cityId: newVal + ''
+                },
+                success: function success(res) {
+                    me.learnCenterList = res.data;
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -2548,7 +2564,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}\n\n.result-wrapper {\n    padding: 0 10px 10px 10px;\n}\n", ""]);
+exports.push([module.i, ".study-center {\n    height: 100%;\n}\n\n.title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}\n\n.result-wrapper {\n    padding: 0 10px 10px 10px;\n}\n\n.list-group {\n    height: 380px;\n    overflow-y: scroll;\n}\n", ""]);
 
 // exports
 

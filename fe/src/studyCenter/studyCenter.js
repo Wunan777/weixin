@@ -4,43 +4,50 @@ import html from './studyCenter.html';
 var app = new Vue({
     el: '#app',
     data: {
-        selected: {
-            province: 1
-        },
-        province: [
-            {
-                text: '辽宁',
-                value: '1'
-            },
-            {
-                text: '山东',
-                value: '2'
-            }
+        province: '-1',
+        provinceList: [
         ],
-        city: [
-            {
-                text: '北京',
-                value: '1'
-            },
-            {
-                text: '大连',
-                value: '2'
-            }
-        ],
-        resultList: [
-            {
-                text: '开发区校区',
-            },
-            {
-                text: '主校区校区'
-            },
-            {
-                text: '开发区校区1',
-            },
-            {
-                text: '开发区校区2',
-            }
+        learnCenterList: [
         ]
     },
-    template: html
+    mounted: function () {
+        var me = this;
+        me.init();
+    },
+    template: html,
+    methods: {
+        init: function () {
+            var me = this;
+            $.ajax({
+                url: '/studyCenter/province',
+                type: 'post',
+                data: {},
+                success: function (res) {
+                    me.provinceList = res.data;
+                    me.province = me.provinceList[0]['id'];
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+    },
+    watch: {
+        province: function (newVal, oldVal) {
+            var me  = this;
+            $.ajax({
+                url: '/studyCenter/learnCenter',
+                type: 'post',
+                data: {
+                    cityId: (newVal + '')
+                },
+                success: function (res) {
+                    me.learnCenterList = res.data;
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
 });

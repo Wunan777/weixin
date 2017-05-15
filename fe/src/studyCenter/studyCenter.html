@@ -11,35 +11,21 @@
                     <span class="necessary">*</span>
                 </label>
                 <div class="col-xs-8">
-                    <select class="form-control" v-model="selected.province">
-                        <option v-for="option in province" v-bind:value="option.value">
-                            {{ option.text }}
+                    <select class="form-control" v-model="province">
+                        <option v-for="option in provinceList" v-bind:value="option.id">
+                            {{ option.name }}
                         </option>
                     </select>
                 </div>
             </div>
         </div>
 
-        <div class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-xs-4 control-label">
-                    城市
-                    <span class="necessary">*</span>
-                </label>
-                <div class="col-xs-8">
-                    <select class="form-control">
-                        <option>大连</option>
-                        <option>济南</option>
-                    </select>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="result-wrapper">
         <ul class="list-group">
-            <li v-for="item in resultList" class="list-group-item">
-                {{ item.text }}
+            <li v-for="item in learnCenterList" class="list-group-item">
+                {{ item.LC_Name }}
             </li>
         </ul>
     </div>
