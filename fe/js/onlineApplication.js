@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 14:
+/***/ 17:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"college-dynamics\">\n    <div class=\"title\">\n        立即报名\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    报考省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.province\">\n                        <option v-for=\"option in provinceList\" v-bind:value=\"option.id\">\n                            {{ option.name }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    学习中心\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.learnCenter\">\n                        <option v-for=\"option in learnCenterList\" v-bind:value=\"option.LC_ID\">\n                            {{ option.LC_Name }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    报考层次\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.level\">\n                        <option v-for=\"option in levelList\" v-bind:value=\"option.value\">{{ option.text }}</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    报考专业\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"selected.subject\">\n                        <option v-for=\"option in subjectList\" v-bind:value=\"option.name\">{{ option.name }}</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    姓名\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"请输入姓名\" v-model=\"selected.name\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    联系方式\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"请输入手机号\" v-model=\"selected.tel\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"tip\">\n            <p v-if=\"err.code != 0\" class=\"error\">\n                {{ err.msg }}\n            </p>\n            <p v-else class=\"success\">\n                {{ err.msg }}\n            </p>\n        </div>\n    </div>\n\n    <div class=\"footer\">\n        <button v-if=\"isAllSelected\" type=\"button\" class=\"btn btn-success btn-block\" @click=\"submit\">\n            提交\n        </button>\n        <button v-else=\"isAllSelected\" type=\"button\" class=\"btn disabled btn-block\">\n            提交\n        </button>\n    </div>\n\n</div>\n";
@@ -2075,33 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(60);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!./onlineApplication.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!./onlineApplication.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
@@ -2196,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!./onlineApplication.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!./onlineApplication.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2205,144 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 45:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _onlineApplication = __webpack_require__(29);
-
-var _onlineApplication2 = _interopRequireDefault(_onlineApplication);
-
-var _onlineApplication3 = __webpack_require__(14);
-
-var _onlineApplication4 = _interopRequireDefault(_onlineApplication3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        selected: {
-            province: '1',
-            learnCenter: '1',
-            level: '1',
-            subject: '1',
-            name: '',
-            tel: ''
-        },
-        province: '',
-        provinceList: [],
-        learnCenterList: [],
-        levelList: [{
-            text: '高起专',
-            value: '1'
-        }, {
-            text: '转升本',
-            value: '2'
-        }],
-        subjectList: [],
-        isAllSelected: false,
-        err: {
-            code: '0',
-            msg: ''
-        }
-    },
-    created: function created() {
-        var me = this;
-        me.init();
-    },
-    template: _onlineApplication4.default,
-    methods: {
-        init: function init() {
-            var me = this;
-
-            $.ajax({
-                url: '/studyCenter/province',
-                type: 'post',
-                data: {},
-                success: function success(res) {
-                    me.provinceList = res.data;
-                    me.selected.province = me.provinceList[0]['id'];
-                },
-                error: function error(err) {
-                    console.log(err);
-                }
-            });
-
-            $.ajax({
-                url: '/studyCenter/subject',
-                type: 'post',
-                data: {},
-                success: function success(res) {
-                    me.subjectList = res.data;
-                    me.selected.subject = me.subjectList[0]['name'];
-                },
-                error: function error(err) {
-                    console.log(err);
-                }
-            });
-        },
-        checkPhone: function checkPhone(tel) {
-            var reg = /^1[3|4|5|7|8][0-9]{9}$/;
-            var flag = reg.test(tel);
-            return flag;
-        },
-        submit: function submit() {
-            var me = this;
-            var tel = me.selected.tel;
-
-            if (!me.checkPhone(tel)) {
-                me.err = {
-                    code: '1',
-                    msg: '手机号格式有误！'
-                };
-            } else {
-                me.err = {
-                    code: '0',
-                    msg: '信息提交成功！'
-                };
-                setTimeout(function () {
-                    window.history.go(-1);
-                }, 3000);
-            }
-        }
-    },
-    watch: {
-        'selected.province': function selectedProvince(val, oldValue) {
-            var me = this;
-            $.ajax({
-                url: '/studyCenter/learnCenter',
-                type: 'post',
-                data: {
-                    cityId: val + ''
-                },
-                success: function success(res) {
-                    me.learnCenterList = res.data;
-                    me.selected.learnCenter = me.learnCenterList[0]['LC_ID'];
-                },
-                error: function error(err) {
-                    console.log(err);
-                }
-            });
-        },
-        'selected': {
-            handler: function handler(obj) {
-                var me = this;
-                if (obj.name && obj.tel) {
-                    me.isAllSelected = true;
-                } else {
-                    me.isAllSelected = false;
-                }
-            },
-            deep: true
-        }
-    }
-});
 
 /***/ }),
 
@@ -2599,6 +2461,144 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _onlineApplication = __webpack_require__(35);
+
+var _onlineApplication2 = _interopRequireDefault(_onlineApplication);
+
+var _onlineApplication3 = __webpack_require__(17);
+
+var _onlineApplication4 = _interopRequireDefault(_onlineApplication3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        selected: {
+            province: '1',
+            learnCenter: '1',
+            level: '1',
+            subject: '1',
+            name: '',
+            tel: ''
+        },
+        province: '',
+        provinceList: [],
+        learnCenterList: [],
+        levelList: [{
+            text: '高起专',
+            value: '1'
+        }, {
+            text: '转升本',
+            value: '2'
+        }],
+        subjectList: [],
+        isAllSelected: false,
+        err: {
+            code: '0',
+            msg: ''
+        }
+    },
+    created: function created() {
+        var me = this;
+        me.init();
+    },
+    template: _onlineApplication4.default,
+    methods: {
+        init: function init() {
+            var me = this;
+
+            $.ajax({
+                url: '/studyCenter/province',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    me.provinceList = res.data;
+                    me.selected.province = me.provinceList[0]['id'];
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+
+            $.ajax({
+                url: '/studyCenter/subject',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    me.subjectList = res.data;
+                    me.selected.subject = me.subjectList[0]['name'];
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        },
+        checkPhone: function checkPhone(tel) {
+            var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+            var flag = reg.test(tel);
+            return flag;
+        },
+        submit: function submit() {
+            var me = this;
+            var tel = me.selected.tel;
+
+            if (!me.checkPhone(tel)) {
+                me.err = {
+                    code: '1',
+                    msg: '手机号格式有误！'
+                };
+            } else {
+                me.err = {
+                    code: '0',
+                    msg: '信息提交成功，我们会与您进行联系，请留意手机信息！'
+                };
+                setTimeout(function () {
+                    window.history.go(-1);
+                }, 3000);
+            }
+        }
+    },
+    watch: {
+        'selected.province': function selectedProvince(val, oldValue) {
+            var me = this;
+            $.ajax({
+                url: '/studyCenter/learnCenter',
+                type: 'post',
+                data: {
+                    cityId: val + ''
+                },
+                success: function success(res) {
+                    me.learnCenterList = res.data;
+                    me.selected.learnCenter = me.learnCenterList[0]['LC_ID'];
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        },
+        'selected': {
+            handler: function handler(obj) {
+                var me = this;
+                if (obj.name && obj.tel) {
+                    me.isAllSelected = true;
+                } else {
+                    me.isAllSelected = false;
+                }
+            },
+            deep: true
+        }
+    }
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2627,7 +2627,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 60:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

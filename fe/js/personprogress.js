@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,13 +1988,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 17:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的学习进度\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in progress\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ dict[key] }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value }}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
-
-/***/ }),
-
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2075,6 +2068,13 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
+
+/***/ }),
+
+/***/ 20:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的学习进度\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        个人教学计划：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ schedule }}\n                </div>\n\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        已修课程：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ getCourse }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        未修课程：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ needCourse }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        已修学分：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ getCredit }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        毕业所需学分：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ needCredit }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 32:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(63);
+var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,43 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _progress = __webpack_require__(32);
-
-var _progress2 = _interopRequireDefault(_progress);
-
-var _progress3 = __webpack_require__(17);
-
-var _progress4 = _interopRequireDefault(_progress3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        progress: {
-            schedule: '日语，俄语，软件，自然科学',
-            completedCourse: '日语',
-            takingCourse: '软件',
-            unCompletedCourse: '软件，自然科学'
-        },
-        dict: {
-            schedule: '个人教学计划',
-            completedCourse: '已修课程',
-            takingCourse: '在修课程',
-            unCompletedCourse: '未修课程'
-        }
-    },
-    template: _progress4.default
-});
 
 /***/ }),
 
@@ -2498,6 +2461,69 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 56:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _progress = __webpack_require__(38);
+
+var _progress2 = _interopRequireDefault(_progress);
+
+var _progress3 = __webpack_require__(20);
+
+var _progress4 = _interopRequireDefault(_progress3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        schedule: '',
+        getCourse: '',
+        needCourse: '',
+        getCredit: '',
+        needCredit: ''
+    },
+    mounted: function mounted() {
+
+        var me = this;
+        $.ajax({
+            url: '/person/getProgress',
+            type: 'post',
+            data: {},
+            success: function success(res) {
+                console.log(res);
+                var data = res.data[0];
+                var getCourse = [];
+                var need = data.need;
+                $.each(data.detail, function (index, ele) {
+                    getCourse.push(ele.text);
+                });
+
+                me.schedule = getCourse.concat(data.need).length > 0 ? getCourse.concat(data.need).join('，') + '。' : '暂无' + '。';
+                me.getCourse = getCourse.length > 0 ? getCourse.join('，') + '。' : '暂无' + '。';
+                me.needCourse = need.length > 0 ? need.join('，') + '。' : '暂无' + '。';
+            }
+        });
+
+        $.ajax({
+            url: '/person/getCredit',
+            type: 'post',
+            data: {},
+            success: function success(res) {
+                var data = res.data[0];
+                me.getCredit = data.get_credit + '分';
+                me.needCredit = data.need_credit + '分';
+            }
+        });
+    },
+    template: _progress4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2526,7 +2552,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 63:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2534,7 +2560,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n    text-align: right;\n}\n\n.row + .row {\n    border-top: 1px solid #eee;\n    padding-top: 10px;\n}\n.content .row {\n    margin: 8px 0;\n}", ""]);
 
 // exports
 

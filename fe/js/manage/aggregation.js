@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 51);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,6 +1988,13 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ 15:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2162,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 33:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(69);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./aggregation.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./aggregation.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2171,173 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _aggregation = __webpack_require__(69);
-
-var _aggregation2 = _interopRequireDefault(_aggregation);
-
-var _aggregation3 = __webpack_require__(68);
-
-var _aggregation4 = _interopRequireDefault(_aggregation3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        'studentAge': {},
-        'studentLevel': {},
-        'studentStatus': {}
-    },
-    mounted: function mounted() {
-        var me = this;
-        me.init();
-    },
-    template: _aggregation4.default,
-    methods: {
-        init: function init() {
-            var me = this;
-            var container = $(me.$el);
-            $.ajax({
-                url: 'getAggregation',
-                type: 'post',
-                data: {},
-                success: function success(res) {
-                    if (res.err == '0') {
-                        console.log(res);
-                        var arr = res.data;
-                        $.each(arr, function (index, ele) {
-                            me[ele.key] = ele.data;
-                        });
-                        me.createAge(me['studentAge']);
-                        me.createLevel(me['studentLevel']);
-                        me.createStatus(me['studentStatus']);
-                    } else {
-                        console.log('error!');
-                        console.log(res.msg);
-                    }
-                }
-            });
-        },
-        createAge: function createAge(data) {
-            var me = this;
-            var container = $(me.$el);
-            var ageXArr = [];
-            var ageYArr = [];
-            $.each(data, function (key, value) {
-                if (key != '40' && key != '50') {
-                    var name = key + '后';
-                    ageXArr.push(name);
-                    ageYArr.push({
-                        name: name,
-                        value: value
-                    });
-                }
-            });
-
-            me.createPieGraph(ageXArr, ageYArr, container.find('#age-graph')[0], '学员年龄信息统计');
-        },
-        createLevel: function createLevel(data) {
-            var me = this;
-            var container = $(me.$el);
-            var levelXArr = [];
-            var levelYArr = [];
-
-            $.each(data, function (key, value) {
-                console.log(key);
-                if (key === 'gqz') {
-                    var name = '高起专';
-                } else if (key === 'zsb') {
-                    var name = '专升本';
-                }
-                levelXArr.push(name);
-                levelYArr.push({
-                    name: name,
-                    value: value
-                });
-            });
-
-            me.createPieGraph(levelXArr, levelYArr, container.find('#level-graph')[0], '学员Level统计');
-        },
-        createStatus: function createStatus(data) {
-            var me = this;
-            var container = $(me.$el);
-            var xArr = [];
-            var yArr = [];
-
-            $.each(data, function (key, value) {
-
-                var name = key;
-                if (key === 'grduate') {
-                    name = '毕业生';
-                } else if (key === 'undergrduate') {
-                    name = '在读生';
-                } else if (key === 'cancel') {
-                    name = '取消学籍';
-                } else if (key === 'exit') {
-                    name = '退学';
-                }
-
-                xArr.push(name);
-                yArr.push({
-                    name: name,
-                    value: value
-                });
-            });
-
-            me.createPieGraph(xArr, yArr, container.find('#status-graph')[0], '学员学籍状态统计');
-        },
-        createPieGraph: function createPieGraph(xArr, yArr, dom, title) {
-            var me = this;
-            var echartInstance = echarts.init(dom);
-
-            var option = {
-                title: {
-                    text: title,
-                    x: 'center'
-                },
-                tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        mark: { show: true },
-                        dataView: { show: true, readOnly: false },
-                        magicType: {
-                            show: true,
-                            type: ['pie', 'funnel']
-                        },
-                        restore: { show: true },
-                        saveAsImage: { show: true }
-                    }
-                },
-                calculable: true,
-                legend: {
-                    x: 'center',
-                    y: 'bottom',
-                    data: xArr
-                },
-                series: [{
-                    type: 'pie',
-                    radius: [30, 110],
-                    roseType: 'area',
-                    data: yArr
-                }]
-            };
-            echartInstance.setOption(option);
-        }
-    }
-});
 
 /***/ }),
 
@@ -2594,6 +2461,173 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 51:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _aggregation = __webpack_require__(33);
+
+var _aggregation2 = _interopRequireDefault(_aggregation);
+
+var _aggregation3 = __webpack_require__(15);
+
+var _aggregation4 = _interopRequireDefault(_aggregation3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        'studentAge': {},
+        'studentLevel': {},
+        'studentStatus': {}
+    },
+    mounted: function mounted() {
+        var me = this;
+        me.init();
+    },
+    template: _aggregation4.default,
+    methods: {
+        init: function init() {
+            var me = this;
+            var container = $(me.$el);
+            $.ajax({
+                url: 'getAggregation',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    if (res.err == '0') {
+                        console.log(res);
+                        var arr = res.data;
+                        $.each(arr, function (index, ele) {
+                            me[ele.key] = ele.data;
+                        });
+                        me.createAge(me['studentAge']);
+                        me.createLevel(me['studentLevel']);
+                        me.createStatus(me['studentStatus']);
+                    } else {
+                        console.log('error!');
+                        console.log(res.msg);
+                    }
+                }
+            });
+        },
+        createAge: function createAge(data) {
+            var me = this;
+            var container = $(me.$el);
+            var ageXArr = [];
+            var ageYArr = [];
+            $.each(data, function (key, value) {
+                if (key != '40' && key != '50') {
+                    var name = key + '后';
+                    ageXArr.push(name);
+                    ageYArr.push({
+                        name: name,
+                        value: value
+                    });
+                }
+            });
+
+            me.createPieGraph(ageXArr, ageYArr, container.find('#age-graph')[0], '学员年龄信息统计');
+        },
+        createLevel: function createLevel(data) {
+            var me = this;
+            var container = $(me.$el);
+            var levelXArr = [];
+            var levelYArr = [];
+
+            $.each(data, function (key, value) {
+                console.log(key);
+                if (key === 'gqz') {
+                    var name = '高起专';
+                } else if (key === 'zsb') {
+                    var name = '专升本';
+                }
+                levelXArr.push(name);
+                levelYArr.push({
+                    name: name,
+                    value: value
+                });
+            });
+
+            me.createPieGraph(levelXArr, levelYArr, container.find('#level-graph')[0], '学员Level统计');
+        },
+        createStatus: function createStatus(data) {
+            var me = this;
+            var container = $(me.$el);
+            var xArr = [];
+            var yArr = [];
+
+            $.each(data, function (key, value) {
+
+                var name = key;
+                if (key === 'grduate') {
+                    name = '毕业生';
+                } else if (key === 'undergrduate') {
+                    name = '在读生';
+                } else if (key === 'cancel') {
+                    name = '取消学籍';
+                } else if (key === 'exit') {
+                    name = '退学';
+                }
+
+                xArr.push(name);
+                yArr.push({
+                    name: name,
+                    value: value
+                });
+            });
+
+            me.createPieGraph(xArr, yArr, container.find('#status-graph')[0], '学员学籍状态统计');
+        },
+        createPieGraph: function createPieGraph(xArr, yArr, dom, title) {
+            var me = this;
+            var echartInstance = echarts.init(dom);
+
+            var option = {
+                title: {
+                    text: title,
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: {
+                            show: true,
+                            type: ['pie', 'funnel']
+                        },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                legend: {
+                    x: 'center',
+                    y: 'bottom',
+                    data: xArr
+                },
+                series: [{
+                    type: 'pie',
+                    radius: [30, 110],
+                    roseType: 'area',
+                    data: yArr
+                }]
+            };
+            echartInstance.setOption(option);
+        }
+    }
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2622,41 +2656,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 68:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
-
-/***/ }),
-
 /***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(70);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./aggregation.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./aggregation.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

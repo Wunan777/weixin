@@ -2,9 +2,17 @@
 var moment = require('moment');
 var mongodb = require('../wechat/mongodb');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 module.exports = function (app) {
     app.use(cookieParser());
+
+    app.use(session({
+        secret: Math.random() + '',
+        cookie: {
+            maxAge:  24 * 3600 * 1000// ms
+        }
+    }));
 
     app.get('/', function (req, res) {
         mobileRoute(req, res);
@@ -42,8 +50,30 @@ module.exports = function (app) {
         mobileRoute(req, res);
     });
 
-    app.get('/person/*', function (req, res) {
+    app.get('/login', function (req, res) {
         mobileRoute(req, res);
+    });
+
+    app.get('/logout', function (req, res) {
+        req.session.sign = false;
+        console.log('退出登录！');
+        mobileRoute(req, res);
+    });
+
+    app.get('/person/*', function (req, res) {
+        // 判断是否登录
+        if (!req.session.sign) {
+            res.render('index', {
+                title: '登录页',
+                url: '/fe/js/login.js',
+                sign: false
+            });
+        }
+        else {
+            var studentId = req.session.studentId;
+            personRoute(req, res, studentId);
+        }
+
     });
 
     // 增加绑定信息
@@ -68,7 +98,7 @@ module.exports = function (app) {
         var routerName = arr.join('');
 
         // 未绑定
-        res.render('weixinBindUpdate', {
+        res.render('weixinBind', {
             title: '更改微信号绑定信息',
             url: '/fe/js/' + routerName + '.js'
         });
@@ -81,6 +111,10 @@ module.exports = function (app) {
 function mobileRoute(req, res) {
 
     var pathName = req.url.split('?')[0];
+    var search = req.url.split('?')[1];
+
+    console.log('SERARCH' + search);
+
     if (pathName === '/') {
         pathName = '/index';
     }
@@ -94,12 +128,30 @@ function mobileRoute(req, res) {
     if (routerName) {
         res.render('index', {
             title: routerName,
-            url: '/fe/js/' + routerName + '.js'
+            url: '/fe/js/' + routerName + '.js',
+            sign: !!req.session.sign
         });
     }
     else {
         res.send('抱歉，未找到该页面！');
     }
+}
+
+function personRoute(req, res, studentId) {
+
+    var pathName = req.url.split('?')[0];
+
+    pv(pathName);
+    uv(req, res);
+
+    var arr = pathName.split('/');
+    var routerName = arr.join('');
+
+    res.render('index', {
+        title: routerName,
+        url: '/fe/js/' + routerName + '.js',
+        sign: !!req.session.sign
+    });
 }
 
 function uv(req, res) {

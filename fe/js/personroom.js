@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 49);
+/******/ 	return __webpack_require__(__webpack_require__.s = 57);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,13 +1988,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 18:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的考场\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-6\">\n                    时间\n                </div>\n                <div class=\"col-xs-6\">\n                    考点\n                </div>\n            </div>\n\n            <div class=\"row\" v-for=\"item in room\">\n\n                <div class=\"col-xs-6\">\n                    <strong>\n                        {{ item.time }}\n                    </strong>\n                </div>\n\n                <div class=\"col-xs-6\">\n                    {{ item.region }}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
-
-/***/ }),
-
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2075,6 +2068,13 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的考场\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-6\">\n                    时间\n                </div>\n                <div class=\"col-xs-6\">\n                    考点\n                </div>\n            </div>\n\n            <div v-if=\"room.length > 0\" class=\"row\">\n                <div v-for=\"item in room\">\n                    <div class=\"col-xs-6\">\n                        <strong>\n                            {{ item.time }}\n                        </strong>\n                    </div>\n\n                    <div class=\"col-xs-6\">\n                        {{ item.region }}\n                    </div>\n                </div>\n            </div>\n            <div v-else>\n                <div class=\"col-xs-6\">\n                    <strong>\n                        暂无考试安排。\n                    </strong>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 33:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(64);
+var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,38 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _room = __webpack_require__(33);
-
-var _room2 = _interopRequireDefault(_room);
-
-var _room3 = __webpack_require__(18);
-
-var _room4 = _interopRequireDefault(_room3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        room: [{
-            time: '13:00',
-            region: '西综A310'
-        }, {
-            time: '20:00',
-            region: '西综A311'
-        }]
-    },
-    template: _room4.default
-});
 
 /***/ }),
 
@@ -2493,6 +2461,60 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 57:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _room = __webpack_require__(39);
+
+var _room2 = _interopRequireDefault(_room);
+
+var _room3 = __webpack_require__(21);
+
+var _room4 = _interopRequireDefault(_room3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        room: []
+    },
+    mounted: function mounted() {
+        this.init();
+    },
+    template: _room4.default,
+    methods: {
+        init: function init() {
+            var me = this;
+            $.ajax({
+                url: '/person/getRoom',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    if (res.data.length > 0) {
+                        room;
+                        $.each(res.data, function (index, ele) {
+                            var obj = {
+                                time: ele['time'],
+                                room: ele['room']
+                            };
+                            me.room.push(obj);
+                        });
+                    }
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2521,7 +2543,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 64:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

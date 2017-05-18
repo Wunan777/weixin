@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 40);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(56);
+var content = __webpack_require__(64);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2208,13 +2208,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 40:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(25);
+var _index = __webpack_require__(28);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -2488,21 +2488,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 56:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".navbar {\n    margin-bottom: 0px;\n}\n\n.thumb-nail-wrapper {\n    border: 1px solid #eee;\n    padding: 8px 0 0 0;\n    text-align: center;\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.container a:link {\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.container a:visited {\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.icon {\n    text-align: center;\n    color: #fff;\n    font-size: 40px;\n    margin-bottom: 0;\n    margin: 0 18%;\n    border-radius: 50%;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(1) .icon {\n    background-color: #fda458;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(2) .icon {\n    background-color: #46b891;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(3) .icon {\n    background-color: #6a9dcc;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(4) .icon {\n    background-color: #54c6e9;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(1) .icon {\n    background-color: #b863de;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(2) .icon {\n    background-color: #6ec271;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(3) .icon {\n    background-color: #7b94ab;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(4) .icon {\n    background-color: #d13020;\n}\n\n.person--info-title {\n    width: 100%;\n    padding: 10px;\n    color: #174e95;\n    font-size: 20px;\n    text-align: center;\n}\n\n.person-info {\n    margin: 0 auto;\n    text-align: center;\n}\n\n.person-box {\n    border: 1px solid #eee;\n    height: 72px;\n    padding-top: 20px;\n    vertical-align: middle;\n}\n\n.green {\n    background-color: #add597;\n}\n\n.person-info {\n    border-radius: 10px 20px 0px 24px;\n}\n\n.person-progress {\n    border-radius: 20px 10px 24px 0;\n}\n\n.person-room {\n    border-radius: 24px 0 20px 10px;\n}\n\n.person-grade {\n    border-radius: 0 24px 10px 20px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2527,6 +2512,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".navbar {\n    margin-bottom: 0px;\n}\n\n.thumb-nail-wrapper {\n    border: 1px solid #eee;\n    padding: 8px 0 0 0;\n    text-align: center;\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.container a:link {\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.container a:visited {\n    text-decoration: none;\n    color: #3d3d3d;\n}\n\n.icon {\n    text-align: center;\n    color: #fff;\n    font-size: 40px;\n    margin-bottom: 0;\n    margin: 0 18%;\n    border-radius: 50%;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(1) .icon {\n    background-color: #fda458;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(2) .icon {\n    background-color: #46b891;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(3) .icon {\n    background-color: #6a9dcc;\n}\n\n.row:nth-of-type(1) .thumb-nail-wrapper:nth-of-type(4) .icon {\n    background-color: #54c6e9;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(1) .icon {\n    background-color: #b863de;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(2) .icon {\n    background-color: #6ec271;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(3) .icon {\n    background-color: #7b94ab;\n}\n\n.row:nth-of-type(2) .thumb-nail-wrapper:nth-of-type(4) .icon {\n    background-color: #d13020;\n}\n\n.person--info-title {\n    width: 100%;\n    padding: 10px;\n    color: #174e95;\n    font-size: 20px;\n    text-align: center;\n}\n\n.person-info {\n    margin: 0 auto;\n    text-align: center;\n}\n\n.person-box {\n    border: 1px solid #eee;\n    height: 72px;\n    padding-top: 20px;\n    vertical-align: middle;\n}\n\n.green {\n    background-color: #add597;\n}\n\n.person-info {\n    border-radius: 10px 20px 0px 24px;\n}\n\n.person-progress {\n    border-radius: 20px 10px 24px 0;\n}\n\n.person-room {\n    border-radius: 24px 0 20px 10px;\n}\n\n.person-grade {\n    border-radius: 0 24px 10px 20px;\n}", ""]);
+
+// exports
 
 
 /***/ })

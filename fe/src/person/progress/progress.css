@@ -11,6 +11,12 @@
 }
 .content .info-item {
     float: right;
+    text-align: right;
+}
+
+.row + .row {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
 }
 .content .row {
     margin: 8px 0;

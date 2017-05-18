@@ -12,6 +12,8 @@ module.exports = {
         'studyCenter': path.resolve(__dirname, './fe/src/studyCenter/studyCenter.js'),
         'help': path.resolve(__dirname, './fe/src/help/help.js'),
         'contactUs': path.resolve(__dirname, './fe/src/contactUs/contactUs.js'),
+        'login':  path.resolve(__dirname, './fe/src/login/login.js'),
+        'logout':  path.resolve(__dirname, './fe/src/logout/logout.js'),
         'personinfo': path.resolve(__dirname, './fe/src/person/info/info.js'),
         'personprogress': path.resolve(__dirname, './fe/src/person/progress/progress.js'),
         'persongrade': path.resolve(__dirname, './fe/src/person/grade/grade.js'),

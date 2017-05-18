@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,10 +1988,10 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 16:
+/***/ 19:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的信息\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in info\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ dict[key] }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value }}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
+module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的信息\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in info\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ dict[key] }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value | format}}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 31:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(62);
+var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,49 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 47:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _info = __webpack_require__(31);
-
-var _info2 = _interopRequireDefault(_info);
-
-var _info3 = __webpack_require__(16);
-
-var _info4 = _interopRequireDefault(_info3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        info: {
-            name: '张三',
-            id: '1322221230123412',
-            studyCenter: '大连开发区校区',
-            level: '初级',
-            major: 'software',
-            requiredScore: '10',
-            getScore: '1'
-        },
-        dict: {
-            name: '姓名',
-            id: '证件号码',
-            studyCenter: '学习中心',
-            level: '层次',
-            major: '专业',
-            requiredScore: '教学计划规定学分',
-            getScore: '已修学分'
-        }
-    },
-    template: _info4.default
-});
 
 /***/ }),
 
@@ -2504,6 +2461,97 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 55:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _info = __webpack_require__(37);
+
+var _info2 = _interopRequireDefault(_info);
+
+var _info3 = __webpack_require__(19);
+
+var _info4 = _interopRequireDefault(_info3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        info: {
+            name: '',
+            student_id: '',
+            major: '',
+            studyCenter: '',
+            level: '',
+            status: '',
+            card_type: '',
+            card_id: '',
+            birthday: '',
+            tel: '',
+            email: ''
+        },
+        dict: {
+            name: '姓名',
+            student_id: '大工学号',
+            major: '专业',
+            studyCenter: '学习中心',
+            level: '层次',
+            status: '学员状态',
+            card_type: '证件类型',
+            card_id: '证件号码',
+            birthday: '出生日期',
+            tel: '联系电话',
+            email: '邮箱'
+        }
+    },
+    mounted: function mounted() {
+        this.init();
+    },
+    template: _info4.default,
+    methods: {
+        init: function init() {
+            var me = this;
+            $.ajax({
+                url: '/person/getInfo',
+                data: {}, // 这里后台可以根据ip 获得session , session 包含studentid
+                type: 'post',
+                success: function success(res) {
+                    console.log(res);
+                    var data = res.data;
+
+                    me.info = {
+                        name: data.name,
+                        student_id: data.student_id,
+                        major: data.major,
+                        studyCenter: data.center,
+                        level: data.level,
+                        status: data.status,
+                        card_type: data.card_type,
+                        card_id: data.card_id,
+                        birthday: data.birthday,
+                        tel: data.tel,
+                        email: data.email
+                    };
+                    // me.info.name = data.name
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
+        }
+    },
+    filters: {
+        format: function format(val) {
+            return val || '未填写';
+        }
+    }
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2532,7 +2580,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 62:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

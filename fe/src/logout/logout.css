@@ -1,0 +1,17 @@
+.content {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.image {
+    text-align: center;
+}
+.image > .fa {
+    color: #009a61;
+    font-size: 80px;
+}
+
+.content p {
+    padding-top: 40px;
+    text-align: center;
+}

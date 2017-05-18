@@ -1,0 +1,22 @@
+.login {
+    margin: 10px;
+    padding: 10px;
+    margin-top: 40%;
+    border: 2px solid #eee;
+    border-radius: 6px;
+
+}
+.login .title {
+    margin-bottom: 20px;
+}
+.submit {
+    float: right;
+}
+
+.success {
+    color: #5cb85c;
+}
+
+.error {
+    color: #ea391a;
+}

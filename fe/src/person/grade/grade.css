@@ -17,8 +17,7 @@
 }
 
 .test-info {
-    border-top: 1px solid #eee;
-    margin: 8px 80px 0px 80px;
+    border-bottom: 1px solid #eee;
     padding: 10px;
     text-align: center;
 }

@@ -86,7 +86,7 @@ var app = new Vue({
             else {
                 me.err = {
                     code: '0',
-                    msg: '信息提交成功！'
+                    msg: '信息提交成功，我们会与您进行联系，请留意手机信息！'
                 };
                 setTimeout(function () {
                     window.history.go(-1);

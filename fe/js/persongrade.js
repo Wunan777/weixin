@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,10 +1988,10 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 15:
+/***/ 18:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in grade\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ key }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    有 {{ info['testNum' ]}} 门已通过，有 {{ info['failNum'] }} 门未通过，有 {{ info['noTestNum']}} 门尚未考试。\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>";
+module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    <p>\n                        有 {{ info.testNum}} 门已通过，有 {{ info.failNum }} 门未通过，有 {{ info.noTestNum }} 门尚未考试。\n                    </p>\n                    <p>\n                        gpa: {{ gpa }}，加权平均分：{{ avg_score }}。\n                    </p>\n                </div>\n            </div>\n\n\n            <div class=\"row\" v-for=\"item in scoreList\">\n\n                <div class=\"col-xs-9\">\n                    <strong class=\"info-item\">\n                        {{ item.text }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-3\">\n                    {{ item.value }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 30:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,41 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _grade = __webpack_require__(30);
-
-var _grade2 = _interopRequireDefault(_grade);
-
-var _grade3 = __webpack_require__(15);
-
-var _grade4 = _interopRequireDefault(_grade3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        grade: {
-            math: '90',
-            software: '80',
-            english: '90'
-        },
-        info: {
-            testNum: '3',
-            failNum: '1',
-            noTestNum: '8'
-        }
-    },
-    template: _grade4.default
-});
 
 /***/ }),
 
@@ -2496,6 +2461,51 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 54:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _grade = __webpack_require__(36);
+
+var _grade2 = _interopRequireDefault(_grade);
+
+var _grade3 = __webpack_require__(18);
+
+var _grade4 = _interopRequireDefault(_grade3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        scoreList: [],
+        info: {},
+        avg_score: '',
+        gpa: ''
+
+    },
+    mounted: function mounted() {
+        var me = this;
+        $.ajax({
+            url: '/person/getScore',
+            type: 'post',
+            data: {},
+            success: function success(res) {
+                var data = res.data[0];
+                me.scoreList = data.detail;
+                me.info = data.info;
+                me.gpa = data.gpa;
+                me.avg_score = data.avg_score;
+            }
+        });
+    },
+    template: _grade4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2524,7 +2534,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 61:
+/***/ 72:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2532,7 +2542,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}\n\n.test-info {\n    border-top: 1px solid #eee;\n    margin: 8px 80px 0px 80px;\n    padding: 10px;\n    text-align: center;\n}", ""]);
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 18px;\n}\n\n.content {\n    margin-top: 10px;\n    border-bottom: 1px solid #eee;\n    padding-bottom: 10px;\n}\n.content .info-item {\n    float: right;\n}\n.content .row {\n    margin: 8px 0;\n}\n\n.test-info {\n    border-bottom: 1px solid #eee;\n    padding: 10px;\n    text-align: center;\n}", ""]);
 
 // exports
 

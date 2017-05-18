@@ -1,6 +1,9 @@
 .navbar-nav {
     margin-top: 0px;
 }
+.nav li {
+    margin: 0;
+}
 .footer {
     text-align: center;
     margin-top: 20px;

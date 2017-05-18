@@ -6,23 +6,31 @@
     <div class="content">
         <div class="container">
 
-            <div class="row" v-for="(value, key) in grade">
-
-                <div class="col-xs-6">
-                    <strong class="info-item">
-                        {{ key }} ：
-                    </strong>
-                </div>
-                <div class="col-xs-6">
-                    {{ value }}
-                </div>
-            </div>
-
             <div class="row">
                 <div class="test-info">
-                    有 {{ info['testNum' ]}} 门已通过，有 {{ info['failNum'] }} 门未通过，有 {{ info['noTestNum']}} 门尚未考试。
+                    <p>
+                        有 {{ info.testNum}} 门已通过，有 {{ info.failNum }} 门未通过，有 {{ info.noTestNum }} 门尚未考试。
+                    </p>
+                    <p>
+                        gpa: {{ gpa }}，加权平均分：{{ avg_score }}。
+                    </p>
                 </div>
             </div>
+
+
+            <div class="row" v-for="item in scoreList">
+
+                <div class="col-xs-9">
+                    <strong class="info-item">
+                        {{ item.text }} ：
+                    </strong>
+                </div>
+                <div class="col-xs-3">
+                    {{ item.value }}
+                </div>
+            </div>
+
+
         </div>
     </div>
 

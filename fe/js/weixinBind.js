@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 20:
+/***/ 23:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"weixin-bind\">\n    <div class=\"title\">\n        <strong>\n            网教学生平台账号与微信公众号绑定\n        </strong>\n    </div>\n\n    <div class=\"form-horizontal\" role=\"form\">\n      <div class=\"form-group\">\n        <label for=\"firstname\" class=\"col-xs-2 control-label\">账号</label>\n        <div class=\"col-xs-10\">\n          <input type=\"text\" class=\"form-control\" id=\"account\" placeholder=\"请输入网教学生平台账号\" v-model=\"account\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"lastname\" class=\"col-xs-2 control-label\">密码</label>\n        <div class=\"col-xs-10\">\n          <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"请输入网教学生平台密码\" v-model=\"password\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n\n        <div class=\"col-xs-8\">\n            <div v-if=\"resErr == '0'\" class=\"success\">\n                {{ tip }}\n            </div>\n            <div v-else class=\"tip error\">\n                {{ tip }}\n            </div>\n        </div>\n\n        <div class=\"col-xs-4\">\n\n            <div v-if=\"!submiting && account && password && resErr != '0'\" class=\"btn btn-success submit\" @click=\"submit\">\n                确认\n            </div>\n            <div v-else class=\"btn btn-default submit\">\n                确认\n            </div>\n\n        </div>\n      </div>\n\n    </div>\n\n</div>";
@@ -2169,13 +2169,25 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 35:
+/***/ 4:
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2193,18 +2205,6 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
 
 /***/ }),
 
@@ -2461,17 +2461,17 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 51:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _weixinBind = __webpack_require__(35);
+var _weixinBind = __webpack_require__(41);
 
 var _weixinBind2 = _interopRequireDefault(_weixinBind);
 
-var _weixinBind3 = __webpack_require__(20);
+var _weixinBind3 = __webpack_require__(23);
 
 var _weixinBind4 = _interopRequireDefault(_weixinBind3);
 
@@ -2553,7 +2553,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 66:
+/***/ 77:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

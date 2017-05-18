@@ -15,16 +15,24 @@
                 </div>
             </div>
 
-            <div class="row" v-for="item in room">
+            <div v-if="room.length > 0" class="row">
+                <div v-for="item in room">
+                    <div class="col-xs-6">
+                        <strong>
+                            {{ item.time }}
+                        </strong>
+                    </div>
 
+                    <div class="col-xs-6">
+                        {{ item.region }}
+                    </div>
+                </div>
+            </div>
+            <div v-else>
                 <div class="col-xs-6">
                     <strong>
-                        {{ item.time }}
+                        暂无考试安排。
                     </strong>
-                </div>
-
-                <div class="col-xs-6">
-                    {{ item.region }}
                 </div>
             </div>
 

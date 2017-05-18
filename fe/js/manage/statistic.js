@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,7 +1988,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 13:
+/***/ 16:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-bar-chart\"></i>\n        微主页流量统计\n        <div class=\"sub-title\">\n            <small>微信公众号流量统计，可<a href=\"https://mp.weixin.qq.com/\">登陆微信公众号平台</a>查看</small>\n        </div>\n\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"pv-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"uv-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
@@ -2075,33 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(59);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./statistic.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./statistic.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
@@ -2196,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 34:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(70);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./statistic.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./statistic.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2205,173 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _statistic = __webpack_require__(28);
-
-var _statistic2 = _interopRequireDefault(_statistic);
-
-var _statistic3 = __webpack_require__(13);
-
-var _statistic4 = _interopRequireDefault(_statistic3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {},
-    mounted: function mounted() {
-        var me = this;
-        me.getWeekPv();
-        me.getWeekUv();
-    },
-    template: _statistic4.default,
-    methods: {
-        createQuery: function createQuery(today) {
-            var arr = [];
-            var day = today;
-            for (var i = 0, len = 7; i < len; i++) {
-                arr.push(day);
-                var timeStamp = parseInt(moment(day).format('X')) - 24 * 3600;
-                day = moment.unix(timeStamp).format('YYYY-MM-DD');
-            }
-            return arr;
-        },
-        getWeekPv: function getWeekPv() {
-            var me = this;
-            var today = moment().format('YYYY-MM-DD');
-            var arr = me.createQuery(today);
-
-            $.ajax({
-                url: '/manage/getPv',
-                type: 'post',
-                data: {
-                    query: arr
-                },
-                success: function success(res) {
-                    var data = res.data;
-                    var xArr = arr;
-                    var yArr = [];
-
-                    $.each(xArr, function (index, value) {
-                        yArr.push(data[value] || 0);
-                    });
-                    xArr = xArr.reverse();
-                    yArr = yArr.reverse();
-
-                    me.createLineGraph(xArr, yArr, $(me.$el).find('#pv-graph')[0], 'pv访问量');
-                },
-                error: function error(err) {
-                    console.log('error!');
-                    console.log(err);
-                }
-
-            });
-        },
-        getWeekUv: function getWeekUv() {
-            var me = this;
-            var today = moment().format('YYYY-MM-DD');
-            var arr = me.createQuery(today);
-
-            $.ajax({
-                url: '/manage/getUv',
-                type: 'post',
-                data: {
-                    query: arr
-                },
-                success: function success(res) {
-                    console.log(res);
-                    var data = res.data;
-                    var xArr = arr;
-                    var yArr = [];
-
-                    $.each(xArr, function (index, value) {
-                        yArr.push(data[value] || 0);
-                    });
-                    xArr = xArr.reverse();
-                    yArr = yArr.reverse();
-
-                    me.createLineGraph(xArr, yArr, $(me.$el).find('#uv-graph')[0], 'uv访问量');
-                },
-                error: function error(err) {
-                    console.log('error!');
-                    console.log(err);
-                }
-
-            });
-        },
-        createLineGraph: function createLineGraph(xArr, yArr, dom, title) {
-
-            var echartInstance = echarts.init(dom);
-            var unitType = '次';
-            var dataShadow = [];
-            var max = Math.max.apply(null, yArr);
-
-            // 所有最大值 ：除了10以内的数，最高位加1,其余位数为0。
-            // 效果：实际值肯定大于等于最大值一半。
-
-            if (max < 10) {
-                max = 10;
-            } else {
-                var tempStr = max + '';
-                var base = Math.pow(10, tempStr.length - 1);
-                max = Math.floor(max / base + 1) * base;
-            }
-
-            for (var i = 0; i < xArr.length; i++) {
-                dataShadow.push(max);
-            }
-
-            var option = {
-                title: {
-                    text: title,
-                    subtext: '最近一周'
-                },
-                tooltip: {
-                    trigger: 'axis',
-                    formatter: '{b} <br />{a}: {c}' + unitType
-                },
-                xAxis: {
-                    data: xArr,
-                    boundaryGap: true
-                },
-                yAxis: {
-                    axisLabel: {
-                        formatter: '{value} ' + unitType
-                    }
-                },
-                series: [{
-                    name: '当月',
-                    type: 'bar',
-                    data: yArr,
-                    itemStyle: {
-                        normal: {
-                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#d1f2f8' }, { offset: 0.5, color: '#b0e5ed' }, { offset: 1, color: '#82d1dd' }])
-                        }
-                    }
-                }, { // For shadow
-                    type: 'bar',
-                    itemStyle: {
-                        normal: { color: 'rgba(0,0,0,0.05)' }
-                    },
-                    data: dataShadow,
-                    barGap: '-100%',
-                    barCategoryGap: '60%',
-                    animation: false
-                }]
-            };
-
-            echartInstance.setOption(option);
-        }
-    }
-});
 
 /***/ }),
 
@@ -2628,18 +2461,170 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 59:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
+"use strict";
 
 
-// module
-exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#pv-graph {\n    height: 300px;\n}\n\n#uv-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
+var _statistic = __webpack_require__(34);
 
-// exports
+var _statistic2 = _interopRequireDefault(_statistic);
 
+var _statistic3 = __webpack_require__(16);
+
+var _statistic4 = _interopRequireDefault(_statistic3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {},
+    mounted: function mounted() {
+        var me = this;
+        me.getWeekPv();
+        me.getWeekUv();
+    },
+    template: _statistic4.default,
+    methods: {
+        createQuery: function createQuery(today) {
+            var arr = [];
+            var day = today;
+            for (var i = 0, len = 7; i < len; i++) {
+                arr.push(day);
+                var timeStamp = parseInt(moment(day).format('X')) - 24 * 3600;
+                day = moment.unix(timeStamp).format('YYYY-MM-DD');
+            }
+            return arr;
+        },
+        getWeekPv: function getWeekPv() {
+            var me = this;
+            var today = moment().format('YYYY-MM-DD');
+            var arr = me.createQuery(today);
+
+            $.ajax({
+                url: '/manage/getPv',
+                type: 'post',
+                data: {
+                    query: arr
+                },
+                success: function success(res) {
+                    var data = res.data;
+                    var xArr = arr;
+                    var yArr = [];
+
+                    $.each(xArr, function (index, value) {
+                        yArr.push(data[value] || 0);
+                    });
+                    xArr = xArr.reverse();
+                    yArr = yArr.reverse();
+
+                    me.createLineGraph(xArr, yArr, $(me.$el).find('#pv-graph')[0], 'pv访问量');
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                }
+
+            });
+        },
+        getWeekUv: function getWeekUv() {
+            var me = this;
+            var today = moment().format('YYYY-MM-DD');
+            var arr = me.createQuery(today);
+
+            $.ajax({
+                url: '/manage/getUv',
+                type: 'post',
+                data: {
+                    query: arr
+                },
+                success: function success(res) {
+                    console.log(res);
+                    var data = res.data;
+                    var xArr = arr;
+                    var yArr = [];
+
+                    $.each(xArr, function (index, value) {
+                        yArr.push(data[value] || 0);
+                    });
+                    xArr = xArr.reverse();
+                    yArr = yArr.reverse();
+
+                    me.createLineGraph(xArr, yArr, $(me.$el).find('#uv-graph')[0], 'uv访问量');
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                }
+
+            });
+        },
+        createLineGraph: function createLineGraph(xArr, yArr, dom, title) {
+
+            var echartInstance = echarts.init(dom);
+            var unitType = '次';
+            var dataShadow = [];
+            var max = Math.max.apply(null, yArr);
+
+            // 所有最大值 ：除了10以内的数，最高位加1,其余位数为0。
+            // 效果：实际值肯定大于等于最大值一半。
+
+            if (max < 10) {
+                max = 10;
+            } else {
+                var tempStr = max + '';
+                var base = Math.pow(10, tempStr.length - 1);
+                max = Math.floor(max / base + 1) * base;
+            }
+
+            for (var i = 0; i < xArr.length; i++) {
+                dataShadow.push(max);
+            }
+
+            var option = {
+                title: {
+                    text: title,
+                    subtext: '最近一周'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{b} <br />{a}: {c}' + unitType
+                },
+                xAxis: {
+                    data: xArr,
+                    boundaryGap: true
+                },
+                yAxis: {
+                    axisLabel: {
+                        formatter: '{value} ' + unitType
+                    }
+                },
+                series: [{
+                    name: '当月',
+                    type: 'bar',
+                    data: yArr,
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#d1f2f8' }, { offset: 0.5, color: '#b0e5ed' }, { offset: 1, color: '#82d1dd' }])
+                        }
+                    }
+                }, { // For shadow
+                    type: 'bar',
+                    itemStyle: {
+                        normal: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    data: dataShadow,
+                    barGap: '-100%',
+                    barCategoryGap: '60%',
+                    animation: false
+                }]
+            };
+
+            echartInstance.setOption(option);
+        }
+    }
+});
 
 /***/ }),
 
@@ -2667,6 +2652,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 70:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#pv-graph {\n    height: 300px;\n}\n\n#uv-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
+
+// exports
 
 
 /***/ })

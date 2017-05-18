@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2078,13 +2078,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 26:
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(57);
+var content = __webpack_require__(65);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2208,13 +2208,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 41:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _introduction = __webpack_require__(26);
+var _introduction = __webpack_require__(29);
 
 var _introduction2 = _interopRequireDefault(_introduction);
 
@@ -2485,21 +2485,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 57:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.page-title {\n    font-size: 18px;\n    text-align: center;\n}\n\n.page p:nth-of-type(1) {\n    margin-top: 10px;\n}\n.page p {\n    text-indent: 24px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2524,6 +2509,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 65:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 20px 16px 10px 16px;\n}\n\n.page-title {\n    font-size: 18px;\n    text-align: center;\n}\n\n.page p:nth-of-type(1) {\n    margin-top: 10px;\n}\n.page p {\n    text-indent: 24px;\n}", ""]);
+
+// exports
 
 
 /***/ })

@@ -11,14 +11,9 @@ module.exports = function (app) {
     var menu = {
         "button": [
             {
-                "name": "学院信息",
-                "sub_button": [
-                    {
-                        "type": "view",
-                        "name": "平台微首页",
-                        "url": onlineAddress + "/index"
-                    }
-                ]
+                "type": "view",
+                "name": "平台微主页",
+                "url": onlineAddress + "/index"
             },
             {
                 "name": "个人信息",

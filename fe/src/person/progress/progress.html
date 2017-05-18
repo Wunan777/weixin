@@ -6,17 +6,67 @@
     <div class="content">
         <div class="container">
 
-            <div class="row" v-for="(value, key) in progress">
+            <div class="row">
 
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <strong class="info-item">
-                        {{ dict[key] }} ：
+                        个人教学计划：
                     </strong>
                 </div>
-                <div class="col-xs-6">
-                    {{ value }}
+                <div class="col-xs-8">
+                    {{ schedule }}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <strong class="info-item">
+                        已修课程：
+                    </strong>
+                </div>
+                <div class="col-xs-8">
+                    {{ getCourse }}
                 </div>
             </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <strong class="info-item">
+                        未修课程：
+                    </strong>
+                </div>
+                <div class="col-xs-8">
+                    {{ needCourse }}
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <strong class="info-item">
+                        已修学分：
+                    </strong>
+                </div>
+                <div class="col-xs-8">
+                    {{ getCredit }}
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <strong class="info-item">
+                        毕业所需学分：
+                    </strong>
+                </div>
+                <div class="col-xs-8">
+                    {{ needCredit }}
+                </div>
+            </div>
+
 
         </div>
     </div>

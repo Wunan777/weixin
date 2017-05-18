@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,13 +2071,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(54);
+var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2189,13 +2189,25 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 38:
+/***/ 4:
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _contactUs = __webpack_require__(23);
+var _contactUs = __webpack_require__(26);
 
 var _contactUs2 = _interopRequireDefault(_contactUs);
 
@@ -2210,18 +2222,6 @@ var app = new Vue({
     data: {},
     template: _contactUs4.default
 });
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
 
 /***/ }),
 
@@ -2478,21 +2478,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 54:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 10px 40px 10px 60px;\n}\n\n.content div {\n    margin: 10px 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2517,6 +2502,21 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".title {\n    padding: 2px 10px;\n    font-size: 18px;\n}\n\n.content {\n    border-bottom: 1px solid #eee;\n    padding: 10px 40px 10px 60px;\n}\n\n.content div {\n    margin: 10px 0;\n}\n", ""]);
+
+// exports
 
 
 /***/ }),

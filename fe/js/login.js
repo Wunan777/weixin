@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,6 +1988,13 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ 12:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"login\">\n    <div class=\"title\">\n        <strong>\n            请先登录\n        </strong>\n    </div>\n\n    <div class=\"form-horizontal\" role=\"form\">\n      <div class=\"form-group\">\n        <label for=\"firstname\" class=\"col-xs-2 control-label\">账号</label>\n        <div class=\"col-xs-10\">\n          <input type=\"text\" class=\"form-control\" id=\"account\" placeholder=\"请输入网教学生平台账号\" v-model=\"account\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"lastname\" class=\"col-xs-2 control-label\">密码</label>\n        <div class=\"col-xs-10\">\n          <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"请输入网教学生平台密码\" v-model=\"password\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n\n        <div class=\"col-xs-8\">\n            <div v-if=\"resErr == '0'\" class=\"success\">\n                {{ tip }}\n            </div>\n            <div v-else class=\"tip error\">\n                {{ tip }}\n            </div>\n        </div>\n\n        <div class=\"col-xs-4\">\n\n            <div v-if=\"!submiting && account && password && resErr != '0'\" class=\"btn btn-success submit\" @click=\"submit\">\n                确认\n            </div>\n            <div v-else class=\"btn btn-default submit\">\n                确认\n            </div>\n\n        </div>\n      </div>\n\n    </div>\n\n</div>";
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2068,13 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"study-center\">\n    <div class=\"title\">\n        学习中心查询\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"province\">\n                        <option v-for=\"option in provinceList\" v-bind:value=\"option.id\">\n                            {{ option.name }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n    <div class=\"result-wrapper\">\n        <ul class=\"list-group\">\n            <li v-for=\"item in learnCenterList\" class=\"list-group-item\">\n                {{ item.LC_Name }}\n            </li>\n        </ul>\n    </div>\n</div>\n";
 
 /***/ }),
 
@@ -2169,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(66);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!./login.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!./login.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2181,30 +2208,66 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 40:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
+"use strict";
 
-// load the styles
-var content = __webpack_require__(76);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!./studyCenter.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!./studyCenter.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
+
+var _login = __webpack_require__(30);
+
+var _login2 = _interopRequireDefault(_login);
+
+var _login3 = __webpack_require__(12);
+
+var _login4 = _interopRequireDefault(_login3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        account: '',
+        password: '',
+        resErr: -1,
+        tip: '',
+        submiting: false
+    },
+    mounted: function mounted() {
+        var me = this;
+    },
+    methods: {
+        submit: function submit() {
+            var me = this;
+            me.submiting = true;
+
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: {
+                    account: $.trim(me.account),
+                    password: $.trim(me.password)
+                },
+                success: function success(res) {
+                    me.resErr = res.err;
+                    me.tip = res.msg;
+                    me.submiting = false;
+                    if (res.err == '0') {
+                        setTimeout(function () {
+                            window.location.href = '/index';
+                        }, 400);
+                    }
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                    me.submiting = false;
+                }
+            });
+        }
+    },
+    template: _login4.default
+});
 
 /***/ }),
 
@@ -2461,73 +2524,6 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 58:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _studyCenter = __webpack_require__(40);
-
-var _studyCenter2 = _interopRequireDefault(_studyCenter);
-
-var _studyCenter3 = __webpack_require__(22);
-
-var _studyCenter4 = _interopRequireDefault(_studyCenter3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        province: '-1',
-        provinceList: [],
-        learnCenterList: []
-    },
-    mounted: function mounted() {
-        var me = this;
-        me.init();
-    },
-    template: _studyCenter4.default,
-    methods: {
-        init: function init() {
-            var me = this;
-            $.ajax({
-                url: '/studyCenter/province',
-                type: 'post',
-                data: {},
-                success: function success(res) {
-                    me.provinceList = res.data;
-                    me.province = me.provinceList[0]['id'];
-                },
-                error: function error(err) {
-                    console.log(err);
-                }
-            });
-        }
-    },
-    watch: {
-        province: function province(newVal, oldVal) {
-            var me = this;
-            $.ajax({
-                url: '/studyCenter/learnCenter',
-                type: 'post',
-                data: {
-                    cityId: newVal + ''
-                },
-                success: function success(res) {
-                    me.learnCenterList = res.data;
-                },
-                error: function error(err) {
-                    console.log(err);
-                }
-            });
-        }
-    }
-});
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2556,7 +2552,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 76:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2564,7 +2560,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".study-center {\n    height: 100%;\n}\n\n.title {\n    padding: 2px 10px;\n    border-bottom: 1px solid #eee;\n    font-size: 20px;\n}\n\n.content {\n    padding: 10px;\n}\n\n.college-dynamics > .footer {\n    padding: 0 10px 10px 10px;\n    border-bottom: 1px solid #eee;\n}\n\n.form-horizontal > .control-label {\n    text-align: right;\n}\n\n.necessary {\n    color: #e9391a;\n}\n\n.result-wrapper {\n    padding: 0 10px 10px 10px;\n}\n\n.list-group {\n    height: 380px;\n    overflow-y: scroll;\n}\n", ""]);
+exports.push([module.i, ".login {\n    margin: 10px;\n    padding: 10px;\n    margin-top: 40%;\n    border: 2px solid #eee;\n    border-radius: 6px;\n\n}\n.login .title {\n    margin-bottom: 20px;\n}\n.submit {\n    float: right;\n}\n\n.success {\n    color: #5cb85c;\n}\n\n.error {\n    color: #ea391a;\n}", ""]);
 
 // exports
 

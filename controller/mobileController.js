@@ -76,6 +76,53 @@ module.exports = function (app) {
         );
     });
 
+    app.post('/login', function (req, loginRes) {
+
+        var body = req.body;
+        var account = body.account;
+        var password = body.password;
+
+        mongodb.find(
+            'User',
+            {
+                'account': account,
+                'password': password
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    if (res.data.length > 0) {
+                        var studentInfo = res.data[0];
+                        req.session.sign = true;
+                        req.session.account = account;
+                        req.session.password = password;
+                        req.session.studentId = studentInfo.student_id;
+
+                        loginRes.send({
+                            err: 0,
+                            msg: '登录成功！'
+                        })
+                    }
+                    else {
+                        loginRes.send({
+                            err: 1,
+                            msg: '账号或密码不正确！'
+                        });
+                    }
+
+                }
+                else {
+                    loginRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
+
     // 绑定微信号
     app.post('/weixinBind', function (req, weixinRes) {
 
@@ -258,4 +305,157 @@ module.exports = function (app) {
 
     });
 
+    app.post('/person/getInfo', function (req, personRes) {
+
+        mongodb.find(
+            'User',
+            {
+                student_id: req.session.studentId
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    if (res.data.length > 0) {
+                        var item = res.data[0];
+                        personRes.send({
+                            data: item,
+                            err: 0,
+                            msg: 'ok'
+                        })
+                    }
+                    else {
+                        personRes.send({
+                            err: 1,
+                            msg: '没有找到该学生信息！'
+                        });
+                    }
+
+                }
+                else {
+                    personRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
+
+    app.post('/person/getRoom', function (req, personRes) {
+
+        mongodb.find(
+            'StudentRoom',
+            {
+                student_id: req.session.studentId
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    personRes.send({
+                        data: res.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+
+                }
+                else {
+                    personRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
+
+    app.post('/person/getScore', function (req, personRes) {
+
+        mongodb.find(
+            'StudentScore',
+            {
+                student_id: req.session.studentId
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    personRes.send({
+                        data: res.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+
+                }
+                else {
+                    personRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
+
+    app.post('/person/getProgress', function (req, personRes) {
+
+        mongodb.find(
+            'StudentScore',
+            {
+                student_id: req.session.studentId
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    personRes.send({
+                        data: res.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+
+                }
+                else {
+                    personRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
+
+    app.post('/person/getCredit', function (req, personRes) {
+
+        mongodb.find(
+            'StudentCredit',
+            {
+                student_id: req.session.studentId
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    personRes.send({
+                        data: res.data,
+                        err: 0,
+                        msg: 'ok'
+                    });
+
+                }
+                else {
+                    personRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
 }
