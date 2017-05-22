@@ -120,9 +120,6 @@ module.exports = function (opts) {
             res.send('wrong');
             return false;
         }
-        // var data = yield getRawBody(req, {
-        //     length:
-        // })
     }
 
 }

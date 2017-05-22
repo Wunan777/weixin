@@ -10,8 +10,10 @@ module.exports = function (app) {
     app.use(session({
         secret: Math.random() + '',
         cookie: {
-            maxAge:  24 * 3600 * 1000// ms
-        }
+            maxAge:  24 * 3600 * 1000 // ms
+        },
+        resave: false,
+        saveUninitialized: true
     }));
 
     app.get('/', function (req, res) {
