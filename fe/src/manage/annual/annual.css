@@ -1,0 +1,36 @@
+.title {
+    margin: 10px 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+.sub-title {
+    font-size: 14px;
+    color: #bcbcbc;
+}
+
+#major-graph {
+    height: 300px;
+    margin-top: 10px;
+}
+
+#center-graph {
+    height: 300px;
+    margin-top: 30px;
+}
+
+.graph-wrapper {
+    border: 1px solid #eee;
+    border-radius: 2px;
+    padding: 10px;
+}
+.select-wrapper {
+    text-align: right;
+}
+.select {
+    display: inline-block;
+}
+
+.year-select {
+    display: inline-block;
+    width: 200px;
+}

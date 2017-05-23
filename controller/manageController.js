@@ -26,6 +26,29 @@ module.exports = function (app) {
         )
     });
 
+    app.post('/manage/getAnnual', function (req, res) {
+        mongodb
+        .find(
+            'Annual',
+            {},
+            function (response) {
+                if (response.err == '0') {
+                    res.send({
+                        err: 0,
+                        msg: '查询成功',
+                        data: response.data
+                    });
+                }
+                else {
+                    res.send({
+                        err: 1,
+                        msg: err.msg
+                    });
+                }
+            }
+        )
+    });
+
     app.post('/manage/getPv', function (req, res) {
         var body = req.body;
         var arr = body.query;

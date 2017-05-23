@@ -8,6 +8,10 @@
     color: #bcbcbc;
 }
 
+#entry-count-graph {
+    height: 300px;
+}
+
 #age-graph {
     height: 300px;
 }

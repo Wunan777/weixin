@@ -1991,7 +1991,7 @@ function isnan (val) {
 /***/ 15:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
+module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"entry-count-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2175,7 +2175,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(69);
+var content = __webpack_require__(70);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2494,12 +2494,11 @@ var app = new Vue({
             var me = this;
             var container = $(me.$el);
             $.ajax({
-                url: 'getAggregation',
+                url: '/manage/getAggregation',
                 type: 'post',
                 data: {},
                 success: function success(res) {
                     if (res.err == '0') {
-                        console.log(res);
                         var arr = res.data;
                         $.each(arr, function (index, ele) {
                             me[ele.key] = ele.data;
@@ -2507,6 +2506,38 @@ var app = new Vue({
                         me.createAge(me['studentAge']);
                         me.createLevel(me['studentLevel']);
                         me.createStatus(me['studentStatus']);
+                    } else {
+                        console.log('error!');
+                        console.log(res.msg);
+                    }
+                }
+            });
+
+            $.ajax({
+                url: '/manage/getAnnual',
+                type: 'post',
+                data: {},
+                success: function success(res) {
+                    if (res.err == '0') {
+                        var arr = res.data;
+                        var annualInfo = {};
+
+                        $.each(arr, function (index, ele) {
+                            if (ele['key'] === 'entryCount') {
+                                annualInfo = ele['data'];
+                                return false;
+                            }
+                        });
+
+                        var xArr = [];
+                        var yArr = [];
+
+                        $.each(annualInfo, function (index, value) {
+                            xArr.push(index + '年');
+                            yArr.push(value);
+                        });
+
+                        me.createLineGraph(xArr, yArr, $(me.$el).find('#entry-count-graph')[0], '每年招生人数', '人', '数据截止到2017年5月');
                     } else {
                         console.log('error!');
                         console.log(res.msg);
@@ -2539,7 +2570,6 @@ var app = new Vue({
             var levelYArr = [];
 
             $.each(data, function (key, value) {
-                console.log(key);
                 if (key === 'gqz') {
                     var name = '高起专';
                 } else if (key === 'zsb') {
@@ -2582,6 +2612,7 @@ var app = new Vue({
 
             me.createPieGraph(xArr, yArr, container.find('#status-graph')[0], '学员学籍状态统计');
         },
+        createEntryCount: function createEntryCount(data) {},
         createPieGraph: function createPieGraph(xArr, yArr, dom, title) {
             var me = this;
             var echartInstance = echarts.init(dom);
@@ -2622,6 +2653,68 @@ var app = new Vue({
                 }]
             };
             echartInstance.setOption(option);
+        },
+        createLineGraph: function createLineGraph(xArr, yArr, dom, title, unitType, subtext) {
+
+            var echartInstance = echarts.init(dom);
+            var dataShadow = [];
+            var max = Math.max.apply(null, yArr);
+
+            // 所有最大值 ：除了10以内的数，最高位加1,其余位数为0。
+            // 效果：实际值肯定大于等于最大值一半。
+
+            if (max < 10) {
+                max = 10;
+            } else {
+                var tempStr = max + '';
+                var base = Math.pow(10, tempStr.length - 1);
+                max = Math.floor(max / base + 1) * base;
+            }
+
+            for (var i = 0; i < xArr.length; i++) {
+                dataShadow.push(max);
+            }
+
+            var option = {
+                title: {
+                    text: title,
+                    subtext: subtext
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{b} <br />{a}: {c}' + unitType
+                },
+                xAxis: {
+                    data: xArr,
+                    boundaryGap: true
+                },
+                yAxis: {
+                    axisLabel: {
+                        formatter: '{value} ' + unitType
+                    }
+                },
+                series: [{
+                    name: '当月',
+                    type: 'bar',
+                    data: yArr,
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#d1f2f8' }, { offset: 0.5, color: '#b0e5ed' }, { offset: 1, color: '#82d1dd' }])
+                        }
+                    }
+                }, { // For shadow
+                    type: 'bar',
+                    itemStyle: {
+                        normal: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    data: dataShadow,
+                    barGap: '-100%',
+                    barCategoryGap: '60%',
+                    animation: false
+                }]
+            };
+
+            echartInstance.setOption(option);
         }
     }
 });
@@ -2656,7 +2749,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 69:
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2664,7 +2757,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#age-graph {\n    height: 300px;\n}\n\n#level-graph {\n    height: 300px;\n}\n\n#status-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
+exports.push([module.i, ".title {\n    margin: 10px 20px;\n    font-size: 18px;\n    border-bottom: 1px solid #eee;\n}\n.sub-title {\n    font-size: 14px;\n    color: #bcbcbc;\n}\n\n#entry-count-graph {\n    height: 300px;\n}\n\n#age-graph {\n    height: 300px;\n}\n\n#level-graph {\n    height: 300px;\n}\n\n#status-graph {\n    height: 300px;\n}\n\n.graph-wrapper {\n    border: 1px solid #eee;\n    border-radius: 2px;\n    padding: 10px;\n}", ""]);
 
 // exports
 

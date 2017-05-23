@@ -1,0 +1,51 @@
+<div class="content">
+    <div class="title">
+        <i class="fa fa-bar-chart"></i>
+        年度统计分析
+        <div class="sub-title">
+            <small>截止到2017年5月</small>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 graph-wrapper">
+                <div class="select-wrapper">
+                    <div class="select">
+                        <label for="name">选择年份</label>
+                        <select class="form-control year-select" v-model="majorSelectYear">
+                              <option v-for="item in majorYear" v-bind:value="item">{{ item }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="major-graph">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 graph-wrapper">
+
+                <div class="select-wrapper">
+                    <div class="select">
+                        <label for="name">选择年份</label>
+                        <select class="form-control year-select" v-model="centerSelectYear">
+                              <option v-for="item in centerYear" v-bind:value="item">{{ item }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="center-graph">
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+    </div>
+
+</div>

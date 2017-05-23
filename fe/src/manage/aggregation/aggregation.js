@@ -18,12 +18,11 @@ var app = new Vue({
             var me = this;
             var container = $(me.$el);
             $.ajax({
-                url: 'getAggregation',
+                url: '/manage/getAggregation',
                 type: 'post',
                 data: {},
                 success: function (res) {
                     if (res.err == '0') {
-                        console.log(res);
                         var arr = res.data;
                         $.each(arr, function (index, ele) {
                             me[ele.key] = ele.data;
@@ -39,6 +38,39 @@ var app = new Vue({
 
                 }
             });
+
+            $.ajax({
+                url: '/manage/getAnnual',
+                type: 'post',
+                data: {},
+                success: function (res) {
+                    if (res.err == '0') {
+                        var arr = res.data;
+                        var annualInfo = {};
+
+                        $.each(arr, function (index, ele) {
+                            if (ele['key'] === 'entryCount') {
+                                annualInfo = ele['data'];
+                                return false;
+                            }
+                        });
+
+                        var xArr = [];
+                        var yArr = [];
+
+                        $.each(annualInfo, function (index, value) {
+                            xArr.push(index + '年');
+                            yArr.push(value);
+                        });
+
+                        me.createLineGraph(xArr, yArr, $(me.$el).find('#entry-count-graph')[0], '每年招生人数', '人', '数据截止到2017年5月');
+                    }
+                    else {
+                        console.log('error!');
+                        console.log(res.msg);
+                    }
+                }
+            })
         },
         createAge: function (data) {
             var me = this;
@@ -65,7 +97,6 @@ var app = new Vue({
             var levelYArr = [];
 
             $.each(data, function (key, value) {
-                console.log(key);
                 if (key === 'gqz') {
                     var name = '高起专';
                 }
@@ -113,6 +144,9 @@ var app = new Vue({
 
             me.createPieGraph(xArr, yArr, container.find('#status-graph')[0], '学员学籍状态统计');
         },
+        createEntryCount: function (data) {
+
+        },
         createPieGraph: function (xArr, yArr, dom, title) {
             var me = this;
             var echartInstance = echarts.init(dom);
@@ -154,6 +188,79 @@ var app = new Vue({
                     }
                 ]
             };
+            echartInstance.setOption(option);
+        },
+        createLineGraph: function (xArr, yArr, dom, title, unitType, subtext) {
+
+            var echartInstance = echarts.init(dom);
+            var dataShadow = [];
+            var max = Math.max.apply(null, yArr);
+
+            // 所有最大值 ：除了10以内的数，最高位加1,其余位数为0。
+            // 效果：实际值肯定大于等于最大值一半。
+
+            if (max < 10) {
+                max = 10;
+            }
+            else {
+                var tempStr = max + '';
+                var base = Math.pow(10, (tempStr.length - 1));
+                max = Math.floor((max / base) + 1) * base;
+            }
+
+            for (var i = 0; i < xArr.length; i++) {
+                dataShadow.push(max);
+            }
+
+            var option = {
+                title: {
+                    text: title,
+                    subtext: subtext
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{b} <br />{a}: {c}' + unitType
+                },
+                xAxis: {
+                    data: xArr,
+                    boundaryGap: true
+                },
+                yAxis: {
+                    axisLabel: {
+                        formatter: '{value} ' + unitType
+                    }
+                },
+                series: [
+                    {
+                        name: '当月',
+                        type: 'bar',
+                        data: yArr,
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#d1f2f8'},
+                                        {offset: 0.5, color: '#b0e5ed'},
+                                        {offset: 1, color: '#82d1dd'}
+                                    ]
+                                )
+                            }
+                        }
+                    },
+                    { // For shadow
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {color: 'rgba(0,0,0,0.05)'}
+                        },
+                        data: dataShadow,
+                        barGap: '-100%',
+                        barCategoryGap: '60%',
+                        animation: false
+                    }
+                ]
+            };
+
             echartInstance.setOption(option);
         }
     }

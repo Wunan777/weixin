@@ -21,7 +21,8 @@ module.exports = {
         'weixinBind': path.resolve(__dirname, './fe/src/weixinBind/weixinBind.js'),
         'weixinBindUpdate': path.resolve(__dirname, './fe/src/weixinBindUpdate/weixinBindUpdate.js'),
         'manage/statistic': path.resolve(__dirname, './fe/src/manage/statistic/statistic.js'),
-        'manage/aggregation': path.resolve(__dirname, './fe/src/manage/aggregation/aggregation.js')
+        'manage/aggregation': path.resolve(__dirname, './fe/src/manage/aggregation/aggregation.js'),
+        'manage/annual': path.resolve(__dirname, './fe/src/manage/annual/annual.js')
     },
     output: {
         path: path.resolve(__dirname, './fe/js/'),
