@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 63);
+/******/ 	return __webpack_require__(__webpack_require__.s = 60);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 21:
+/***/ 20:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    <p>\n                        有 {{ info.testNum}} 门已通过，有 {{ info.failNum }} 门未通过，有 {{ info.noTestNum }} 门尚未考试。\n                    </p>\n                    <p>\n                        gpa: {{ gpa }}，加权平均分：{{ avg_score }}。\n                    </p>\n                </div>\n            </div>\n\n\n            <div class=\"row\" v-for=\"item in scoreList\">\n\n                <div class=\"col-xs-9\">\n                    <strong class=\"info-item\">\n                        {{ item.text }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-3\">\n                    {{ item.value }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
@@ -2181,13 +2181,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 42:
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(84);
+var content = __webpack_require__(80);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2489,17 +2489,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 63:
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _grade = __webpack_require__(42);
+var _grade = __webpack_require__(40);
 
 var _grade2 = _interopRequireDefault(_grade);
 
-var _grade3 = __webpack_require__(21);
+var _grade3 = __webpack_require__(20);
 
 var _grade4 = _interopRequireDefault(_grade3);
 
@@ -2534,7 +2534,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 84:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

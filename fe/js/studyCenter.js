@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 67);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 24:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"study-center\">\n    <div class=\"title\">\n        学习中心查询\n    </div>\n\n    <div class=\"content\">\n        <div class=\"form-horizontal\" role=\"form\">\n            <div class=\"form-group\">\n                <label class=\"col-xs-4 control-label\">\n                    省份\n                    <span class=\"necessary\">*</span>\n                </label>\n                <div class=\"col-xs-8\">\n                    <select class=\"form-control\" v-model=\"province\">\n                        <option v-for=\"option in provinceList\" v-bind:value=\"option.id\">\n                            {{ option.name }}\n                        </option>\n                    </select>\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n    <div class=\"result-wrapper\">\n        <ul class=\"list-group\">\n            <li v-for=\"item in learnCenterList\" class=\"list-group-item\">\n                {{ item.LC_Name }}\n            </li>\n        </ul>\n    </div>\n</div>\n";
@@ -2181,13 +2181,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 46:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(88);
+var content = __webpack_require__(84);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2489,17 +2489,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 67:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _studyCenter = __webpack_require__(46);
+var _studyCenter = __webpack_require__(44);
 
 var _studyCenter2 = _interopRequireDefault(_studyCenter);
 
-var _studyCenter3 = __webpack_require__(25);
+var _studyCenter3 = __webpack_require__(24);
 
 var _studyCenter4 = _interopRequireDefault(_studyCenter3);
 
@@ -2556,7 +2556,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 88:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

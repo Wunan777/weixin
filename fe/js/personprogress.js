@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 65);
+/******/ 	return __webpack_require__(__webpack_require__.s = 62);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 22:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的学习进度\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        个人教学计划：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ schedule }}\n                </div>\n\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        已修课程：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ getCourse }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        未修课程：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ needCourse }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        已修学分：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ getCredit }}\n                </div>\n            </div>\n\n            <div class=\"row\">\n\n                <div class=\"col-xs-4\">\n                    <strong class=\"info-item\">\n                        毕业所需学分：\n                    </strong>\n                </div>\n                <div class=\"col-xs-8\">\n                    {{ needCredit }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
@@ -2181,13 +2181,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 44:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(86);
+var content = __webpack_require__(82);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2489,17 +2489,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 65:
+/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _progress = __webpack_require__(44);
+var _progress = __webpack_require__(42);
 
 var _progress2 = _interopRequireDefault(_progress);
 
-var _progress3 = __webpack_require__(23);
+var _progress3 = __webpack_require__(22);
 
 var _progress4 = _interopRequireDefault(_progress3);
 
@@ -2552,7 +2552,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 86:
+/***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

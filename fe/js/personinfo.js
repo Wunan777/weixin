@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 64);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 22:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的信息\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\" v-for=\"(value, key) in info\">\n\n                <div class=\"col-xs-6\">\n                    <strong class=\"info-item\">\n                        {{ dict[key] }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-6\">\n                    {{ value | format}}\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
@@ -2181,13 +2181,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(85);
+var content = __webpack_require__(81);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2489,17 +2489,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 64:
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _info = __webpack_require__(43);
+var _info = __webpack_require__(41);
 
 var _info2 = _interopRequireDefault(_info);
 
-var _info3 = __webpack_require__(22);
+var _info3 = __webpack_require__(21);
 
 var _info4 = _interopRequireDefault(_info3);
 
@@ -2580,7 +2580,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 85:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

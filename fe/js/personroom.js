@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 66);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 24:
+/***/ 23:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的考场\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-6\">\n                    时间\n                </div>\n                <div class=\"col-xs-6\">\n                    考点\n                </div>\n            </div>\n\n            <div v-if=\"room.length > 0\" class=\"row\">\n                <div v-for=\"item in room\">\n                    <div class=\"col-xs-6\">\n                        <strong>\n                            {{ item.time }}\n                        </strong>\n                    </div>\n\n                    <div class=\"col-xs-6\">\n                        {{ item.region }}\n                    </div>\n                </div>\n            </div>\n            <div v-else>\n                <div class=\"col-xs-6\">\n                    <strong>\n                        暂无考试安排。\n                    </strong>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
@@ -2181,13 +2181,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 45:
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(87);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2489,17 +2489,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 66:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _room = __webpack_require__(45);
+var _room = __webpack_require__(43);
 
 var _room2 = _interopRequireDefault(_room);
 
-var _room3 = __webpack_require__(24);
+var _room3 = __webpack_require__(23);
 
 var _room4 = _interopRequireDefault(_room3);
 
@@ -2543,7 +2543,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 87:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
