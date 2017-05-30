@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/fe/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/fe/lib/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/fe/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/fe/css/manage.css">
+
 </head>
 
 
@@ -16,40 +18,50 @@
     <div class="nav">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#example-navbar-collapse">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">微信公众号后台系统</a>
-            </div>
-            <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav navbar-nav">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">微信公众号后台系统</a>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li <% if (pathName === '/manage/statistic') { %>class="active" <% } %>
+                        >
+                            <a href="/manage/">
+                                流量统计
+                            </a>
+                        </li>
+                        <li <% if (pathName === '/manage/aggregation') { %>class="active" <% } %>
+                        >
+                            <a href="/manage/aggregation">
+                                总汇总
+                            </a>
+                        </li>
+                        <li <% if (pathName === '/manage/annual') { %>class="active" <% } %>
+                        >
+                            <a href="/manage/annual">
+                                年度分析
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="user-info">
+                        <div class="user-name">
+                            欢迎，<%= userName %>
+                        </div>
+                        <a href="/manage/logout">退出登录</a>
+
+                    </div>
+                </div>
 
 
-                    <li <% if (pathName === '/manage/statistic') { %>class="active" <% } %>
-                    >
-                        <a href="/manage/">
-                            流量统计
-                        </a>
-                    </li>
-                    <li <% if (pathName === '/manage/aggregation') { %>class="active" <% } %>
-                    >
-                        <a href="/manage/aggregation">
-                            总汇总
-                        </a>
-                    </li>
-                    <li <% if (pathName === '/manage/annual') { %>class="active" <% } %>
-                    >
-                        <a href="/manage/annual">
-                            年度分析
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
             </div>
         </nav>
     </div>

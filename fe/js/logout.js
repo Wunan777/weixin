@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 49);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 31:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(76);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,35 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _logout = __webpack_require__(31);
-
-var _logout2 = _interopRequireDefault(_logout);
-
-var _logout3 = __webpack_require__(13);
-
-var _logout4 = _interopRequireDefault(_logout3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {},
-    mounted: function mounted() {
-        setTimeout(function () {
-            window.location.href = '/index';
-        }, 800);
-    },
-    template: _logout4.default
-});
 
 /***/ }),
 
@@ -2490,6 +2461,35 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 55:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _logout = __webpack_require__(34);
+
+var _logout2 = _interopRequireDefault(_logout);
+
+var _logout3 = __webpack_require__(13);
+
+var _logout4 = _interopRequireDefault(_logout3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {},
+    mounted: function mounted() {
+        setTimeout(function () {
+            window.location.href = '/index';
+        }, 800);
+    },
+    template: _logout4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2518,7 +2518,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 68:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

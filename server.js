@@ -1,4 +1,6 @@
 var port = 8099;
+// var hostname = '192.168.1.100';
+var hostname  = '127.0.0.1';
 
 var path = require('path');
 var express = require('express');
@@ -23,7 +25,7 @@ route(app);
 controller(app);
 
 
-var server = app.listen(port, function () {
+var server = app.listen(port, hostname, function () {
   var host = server.address().address;
   var port = server.address().port;
 

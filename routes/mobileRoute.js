@@ -1,20 +1,8 @@
 'use strict'
 var moment = require('moment');
 var mongodb = require('../wechat/mongodb');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
 
 module.exports = function (app) {
-    app.use(cookieParser());
-
-    app.use(session({
-        secret: Math.random() + '',
-        cookie: {
-            maxAge:  24 * 3600 * 1000 // ms
-        },
-        resave: false,
-        saveUninitialized: true
-    }));
 
     app.get('/', function (req, res) {
         mobileRoute(req, res);

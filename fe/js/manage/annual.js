@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 58);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,6 +1988,13 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ 16:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-bar-chart\"></i>\n        年度统计分析\n        <div class=\"sub-title\">\n            <small>截止到2017年5月</small>\n        </div>\n\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div class=\"select-wrapper\">\n                    <div class=\"select\">\n                        <label for=\"name\">选择年份</label>\n                        <select class=\"form-control year-select\" v-model=\"majorSelectYear\">\n                              <option v-for=\"item in majorYear\" v-bind:value=\"item\">{{ item }}</option>\n                        </select>\n                    </div>\n                </div>\n                <div id=\"major-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n\n                <div class=\"select-wrapper\">\n                    <div class=\"select\">\n                        <label for=\"name\">选择年份</label>\n                        <select class=\"form-control year-select\" v-model=\"centerSelectYear\">\n                              <option v-for=\"item in centerYear\" v-bind:value=\"item\">{{ item }}</option>\n                        </select>\n                    </div>\n                </div>\n\n                <div id=\"center-graph\">\n                </div>\n\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2159,6 +2166,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(79);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./annual.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./annual.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
 
@@ -2427,17 +2461,17 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 52:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _annual = __webpack_require__(81);
+var _annual = __webpack_require__(37);
 
 var _annual2 = _interopRequireDefault(_annual);
 
-var _annual3 = __webpack_require__(80);
+var _annual3 = __webpack_require__(16);
 
 var _annual4 = _interopRequireDefault(_annual3);
 
@@ -2650,41 +2684,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 80:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-bar-chart\"></i>\n        年度统计分析\n        <div class=\"sub-title\">\n            <small>截止到2017年5月</small>\n        </div>\n\n    </div>\n\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div class=\"select-wrapper\">\n                    <div class=\"select\">\n                        <label for=\"name\">选择年份</label>\n                        <select class=\"form-control year-select\" v-model=\"majorSelectYear\">\n                              <option v-for=\"item in majorYear\" v-bind:value=\"item\">{{ item }}</option>\n                        </select>\n                    </div>\n                </div>\n                <div id=\"major-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n\n                <div class=\"select-wrapper\">\n                    <div class=\"select\">\n                        <label for=\"name\">选择年份</label>\n                        <select class=\"form-control year-select\" v-model=\"centerSelectYear\">\n                              <option v-for=\"item in centerYear\" v-bind:value=\"item\">{{ item }}</option>\n                        </select>\n                    </div>\n                </div>\n\n                <div id=\"center-graph\">\n                </div>\n\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
-
-/***/ }),
-
-/***/ 81:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(82);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./annual.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./annual.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 82:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

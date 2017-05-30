@@ -140,4 +140,51 @@ module.exports = function (app) {
         );
 
     });
+
+    app.post('/manage/login', function (req, loginRes) {
+
+        var body = req.body;
+        var account = body.account;
+        var password = body.password;
+
+        mongodb
+        .find(
+            'Manager',
+            {
+                'account': account,
+                'password': password
+            },
+            function (res) {
+                if (res.err == '0') {
+
+                    if (res.data.length > 0) {
+                        var studentInfo = res.data[0];
+                        req.session.manageSign = true;
+                        req.session.manageAccount = account;
+                        req.session.managePassword = password;
+
+                        loginRes.send({
+                            err: 0,
+                            msg: '登录成功！'
+                        });
+                    }
+                    else {
+                        loginRes.send({
+                            err: 1,
+                            msg: '账号或密码不正确！'
+                        });
+                    }
+
+                }
+                else {
+                    loginRes.send({
+                        err: 2,
+                        msg: '数据库查询过程中出错！'
+                    });
+                }
+
+            }
+        );
+
+    });
 }

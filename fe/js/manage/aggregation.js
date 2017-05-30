@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 57);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1991,7 +1991,7 @@ function isnan (val) {
 /***/ 15:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            截止到2017年5月\n        </div>\n    </div>\n\n    <div class=\"container\">\n\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"entry-count-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
+module.exports = "<div class=\"content\">\n    <div class=\"title\">\n        <i class=\"fa fa-area-chart\"></i>\n        远程教育学院学生信息统计\n        <div class=\"sub-title\">\n            <small>截止到2017年5月</small>\n        </div>\n    </div>\n\n    <div class=\"container\">\n\n        <div class=\"row\">\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"age-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-6 graph-wrapper\">\n                <div id=\"level-graph\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"status-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10 graph-wrapper\">\n                <div id=\"entry-count-graph\">\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 33:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(70);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2461,13 +2461,13 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 51:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _aggregation = __webpack_require__(33);
+var _aggregation = __webpack_require__(36);
 
 var _aggregation2 = _interopRequireDefault(_aggregation);
 
@@ -2749,7 +2749,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 70:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

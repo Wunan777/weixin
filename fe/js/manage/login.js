@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 68);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,6 +1988,13 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ 17:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"login-wrapper\">\n    <div class=\"image\">\n        <img src=\"/public/dlut.png\" width=\"499px\" height=\"83px\">\n    </div>\n\n    <div class=\"login\">\n        <div class=\"title\">\n            <strong>\n                请先登录微信后台系统\n            </strong>\n        </div>\n\n        <div class=\"form-horizontal\" role=\"form\">\n\n          <div class=\"form-group\">\n            <label for=\"firstname\" class=\"col-xs-2 control-label\">账号：</label>\n            <div class=\"col-xs-10\">\n              <input type=\"text\" class=\"form-control\" id=\"account\" placeholder=\"请输入管理员账号\" v-model=\"account\">\n            </div>\n          </div>\n\n          <div class=\"form-group\">\n            <label for=\"lastname\" class=\"col-xs-2 control-label\">密码：</label>\n            <div class=\"col-xs-10\">\n              <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"请输入管理员平台密码\" v-model=\"password\">\n            </div>\n          </div>\n\n          <div class=\"form-group\">\n\n            <div class=\"col-xs-8\">\n                <div v-if=\"resErr == '0'\" class=\"success\">\n                    {{ tip }}\n                </div>\n                <div v-else class=\"tip error\">\n                    {{ tip }}\n                </div>\n            </div>\n\n            <div class=\"col-xs-4\">\n\n                <div v-if=\"!submiting && account && password && resErr != '0'\" class=\"btn btn-success submit\" @click=\"submit\">\n                    确认\n                </div>\n                <div v-else class=\"btn btn-default submit\">\n                    确认\n                </div>\n\n            </div>\n          </div>\n\n        </div>\n    </div>\n\n</div>";
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2068,13 +2075,6 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
-
-/***/ }),
-
-/***/ 26:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"weixin-bind\">\n    <div class=\"title\">\n        <strong>\n            网教学生平台账号与微信公众号绑定\n        </strong>\n    </div>\n\n    <div class=\"form-horizontal\" role=\"form\">\n      <div class=\"form-group\">\n        <label for=\"firstname\" class=\"col-xs-2 control-label\">账号</label>\n        <div class=\"col-xs-10\">\n          <input type=\"text\" class=\"form-control\" id=\"account\" placeholder=\"请输入网教学生平台账号\" v-model=\"account\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"lastname\" class=\"col-xs-2 control-label\">密码</label>\n        <div class=\"col-xs-10\">\n          <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"请输入网教学生平台密码\" v-model=\"password\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n\n        <div class=\"col-xs-8\">\n            <div v-if=\"resErr == '0'\" class=\"success\">\n                {{ tip }}\n            </div>\n            <div v-else class=\"tip error\">\n                {{ tip }}\n            </div>\n        </div>\n\n        <div class=\"col-xs-4\">\n\n            <div v-if=\"!submiting && account && password && resErr != '0'\" class=\"btn btn-success submit\" @click=\"submit\">\n                确认\n            </div>\n            <div v-else class=\"btn btn-default submit\">\n                确认\n            </div>\n\n        </div>\n      </div>\n\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,6 +2169,33 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
+/***/ 38:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(80);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./login.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./login.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -2178,33 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 47:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(89);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!./weixinBind.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!./weixinBind.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
@@ -2461,6 +2461,69 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 59:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _login = __webpack_require__(38);
+
+var _login2 = _interopRequireDefault(_login);
+
+var _login3 = __webpack_require__(17);
+
+var _login4 = _interopRequireDefault(_login3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        account: '',
+        password: '',
+        resErr: -1,
+        tip: '',
+        submiting: false
+    },
+    mounted: function mounted() {
+        var me = this;
+    },
+    methods: {
+        submit: function submit() {
+            var me = this;
+            me.submiting = true;
+
+            $.ajax({
+                url: '/manage/login',
+                type: 'post',
+                data: {
+                    account: $.trim(me.account),
+                    password: $.trim(me.password)
+                },
+                success: function success(res) {
+                    me.resErr = res.err;
+                    me.tip = res.msg;
+                    me.submiting = false;
+                    if (res.err == '0') {
+                        setTimeout(function () {
+                            window.location.href = '/manage/';
+                        }, 400);
+                    }
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                    me.submiting = false;
+                }
+            });
+        }
+    },
+    template: _login4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2489,71 +2552,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 68:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _weixinBind = __webpack_require__(47);
-
-var _weixinBind2 = _interopRequireDefault(_weixinBind);
-
-var _weixinBind3 = __webpack_require__(26);
-
-var _weixinBind4 = _interopRequireDefault(_weixinBind3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        account: '',
-        password: '',
-        openId: '',
-        resErr: -1,
-        tip: '',
-        submiting: false
-    },
-    mounted: function mounted() {
-
-        var me = this;
-        var search = window.location.search;
-        var openIdStr = search.split('&')[0];
-        me.openId = openIdStr.split('=')[1];
-    },
-    methods: {
-        submit: function submit() {
-            var me = this;
-            me.submiting = true;
-
-            $.ajax({
-                url: '/weixinBind',
-                type: 'post',
-                data: {
-                    account: $.trim(me.account),
-                    password: $.trim(me.password),
-                    openId: $.trim(me.openId)
-                },
-                success: function success(res) {
-                    me.resErr = res.err;
-                    me.tip = res.msg;
-                    me.submiting = false;
-                },
-                error: function error(err) {
-                    console.log('error!');
-                    console.log(err);
-                    me.submiting = false;
-                }
-            });
-        }
-    },
-    template: _weixinBind4.default
-});
-
-/***/ }),
-
-/***/ 89:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2561,7 +2560,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".weixin-bind {\n    margin: 10px;\n    padding: 10px;\n    margin-top: 40%;\n    border: 2px solid #eee;\n    border-radius: 6px;\n\n}\n.weixin-bind .title {\n    margin-bottom: 20px;\n}\n.submit {\n    float: right;\n}\n\n.success {\n    color: #5cb85c;\n}\n\n.error {\n    color: #ea391a;\n}", ""]);
+exports.push([module.i, ".login-wrapper {\n    position: absolute;     /* 相对定位或绝对定位均可 */\n    width: 500px;\n    /*/*height: 200px;/**/\n    border:1px solid #eee;\n    border-radius: 4px;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: rgba(215, 229, 242, .6);\n}\n\n.login {\n    border-top: 1px solid #b6cfe3;\n    padding: 12px;\n}\n\n.login .title {\n    margin-bottom: 20px;\n}\n.submit {\n    float: right;\n}\n\n.success {\n    color: #5cb85c;\n}\n\n.error {\n    color: #ea391a;\n}", ""]);
 
 // exports
 

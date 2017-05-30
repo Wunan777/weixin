@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,13 +2071,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(62);
+var content = __webpack_require__(70);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2201,13 +2201,13 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _collegeDynamics = __webpack_require__(25);
+var _collegeDynamics = __webpack_require__(28);
 
 var _collegeDynamics2 = _interopRequireDefault(_collegeDynamics);
 
@@ -2528,7 +2528,14 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 62:
+/***/ 7:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"college-dynamics\">\n    <div class=\"title\">\n        学院动态\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-8\">\n                    新闻标题\n                </div>\n                <div class=\"col-xs-4\">\n                    时间\n                </div>\n            </div>\n\n            <div class=\"row new\" v-for=\"item in news\">\n\n                <div class=\"col-xs-8\">\n                    <a :href=\"item.url\">\n                        {{ item.title }}\n                    </a>\n                </div>\n\n                <div class=\"col-xs-4\">\n                    {{ item.time }}\n                </div>\n            </div>\n\n            <div class=\"row more\">\n                <div class=\"col-xs-12\">\n                    <a href=\"http://www.edlut.com/mobile.php/NewsState/getArticle/item_id/92/if_ShowList/1/\" class=\"btn btn-info\">\n                        更多新闻\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>\n";
+
+/***/ }),
+
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -2540,13 +2547,6 @@ exports.push([module.i, ".title {\n    padding: 2px 10px;\n    border-bottom: 1p
 
 // exports
 
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"college-dynamics\">\n    <div class=\"title\">\n        学院动态\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-8\">\n                    新闻标题\n                </div>\n                <div class=\"col-xs-4\">\n                    时间\n                </div>\n            </div>\n\n            <div class=\"row new\" v-for=\"item in news\">\n\n                <div class=\"col-xs-8\">\n                    <a :href=\"item.url\">\n                        {{ item.title }}\n                    </a>\n                </div>\n\n                <div class=\"col-xs-4\">\n                    {{ item.time }}\n                </div>\n            </div>\n\n            <div class=\"row more\">\n                <div class=\"col-xs-12\">\n                    <a href=\"http://www.edlut.com/mobile.php/NewsState/getArticle/item_id/92/if_ShowList/1/\" class=\"btn btn-info\">\n                        更多新闻\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>\n";
 
 /***/ })
 

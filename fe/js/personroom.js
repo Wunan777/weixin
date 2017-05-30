@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 66);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2071,7 +2071,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 21:
+/***/ 24:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的考场\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"col-xs-6\">\n                    时间\n                </div>\n                <div class=\"col-xs-6\">\n                    考点\n                </div>\n            </div>\n\n            <div v-if=\"room.length > 0\" class=\"row\">\n                <div v-for=\"item in room\">\n                    <div class=\"col-xs-6\">\n                        <strong>\n                            {{ item.time }}\n                        </strong>\n                    </div>\n\n                    <div class=\"col-xs-6\">\n                        {{ item.region }}\n                    </div>\n                </div>\n            </div>\n            <div v-else>\n                <div class=\"col-xs-6\">\n                    <strong>\n                        暂无考试安排。\n                    </strong>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n</div>";
@@ -2169,13 +2169,25 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 39:
+/***/ 4:
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(76);
+var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2193,18 +2205,6 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
 
 /***/ }),
 
@@ -2461,17 +2461,45 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 58:
+/***/ 6:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _room = __webpack_require__(39);
+var _room = __webpack_require__(45);
 
 var _room2 = _interopRequireDefault(_room);
 
-var _room3 = __webpack_require__(21);
+var _room3 = __webpack_require__(24);
 
 var _room4 = _interopRequireDefault(_room3);
 
@@ -2515,35 +2543,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 76:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2169,13 +2169,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 30:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(67);
+var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2205,69 +2205,6 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _login = __webpack_require__(30);
-
-var _login2 = _interopRequireDefault(_login);
-
-var _login3 = __webpack_require__(12);
-
-var _login4 = _interopRequireDefault(_login3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        account: '',
-        password: '',
-        resErr: -1,
-        tip: '',
-        submiting: false
-    },
-    mounted: function mounted() {
-        var me = this;
-    },
-    methods: {
-        submit: function submit() {
-            var me = this;
-            me.submiting = true;
-
-            $.ajax({
-                url: '/login',
-                type: 'post',
-                data: {
-                    account: $.trim(me.account),
-                    password: $.trim(me.password)
-                },
-                success: function success(res) {
-                    me.resErr = res.err;
-                    me.tip = res.msg;
-                    me.submiting = false;
-                    if (res.err == '0') {
-                        setTimeout(function () {
-                            window.location.href = '/index';
-                        }, 400);
-                    }
-                },
-                error: function error(err) {
-                    console.log('error!');
-                    console.log(err);
-                    me.submiting = false;
-                }
-            });
-        }
-    },
-    template: _login4.default
-});
 
 /***/ }),
 
@@ -2524,6 +2461,69 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
+/***/ 54:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _login = __webpack_require__(33);
+
+var _login2 = _interopRequireDefault(_login);
+
+var _login3 = __webpack_require__(12);
+
+var _login4 = _interopRequireDefault(_login3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        account: '',
+        password: '',
+        resErr: -1,
+        tip: '',
+        submiting: false
+    },
+    mounted: function mounted() {
+        var me = this;
+    },
+    methods: {
+        submit: function submit() {
+            var me = this;
+            me.submiting = true;
+
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: {
+                    account: $.trim(me.account),
+                    password: $.trim(me.password)
+                },
+                success: function success(res) {
+                    me.resErr = res.err;
+                    me.tip = res.msg;
+                    me.submiting = false;
+                    if (res.err == '0') {
+                        setTimeout(function () {
+                            window.location.href = '/index';
+                        }, 400);
+                    }
+                },
+                error: function error(err) {
+                    console.log('error!');
+                    console.log(err);
+                    me.submiting = false;
+                }
+            });
+        }
+    },
+    template: _login4.default
+});
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -2552,7 +2552,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 67:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);

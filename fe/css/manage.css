@@ -1,0 +1,15 @@
+.user-info {
+    display: inline;
+    float: right;
+    text-align: middle;
+    line-height: 50px;
+}
+
+.user-name {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 8px;
+    margin-right: 8px;
+    border-right: 1px solid #ddd;
+}

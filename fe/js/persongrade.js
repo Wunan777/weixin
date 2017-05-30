@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1988,13 +1988,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ 18:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    <p>\n                        有 {{ info.testNum}} 门已通过，有 {{ info.failNum }} 门未通过，有 {{ info.noTestNum }} 门尚未考试。\n                    </p>\n                    <p>\n                        gpa: {{ gpa }}，加权平均分：{{ avg_score }}。\n                    </p>\n                </div>\n            </div>\n\n\n            <div class=\"row\" v-for=\"item in scoreList\">\n\n                <div class=\"col-xs-9\">\n                    <strong class=\"info-item\">\n                        {{ item.text }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-3\">\n                    {{ item.value }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
-
-/***/ }),
-
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2075,6 +2068,13 @@ function toComment(sourceMap) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"person-info\">\n    <div class=\"title\">\n        我的成绩\n    </div>\n\n    <div class=\"content\">\n        <div class=\"container\">\n\n            <div class=\"row\">\n                <div class=\"test-info\">\n                    <p>\n                        有 {{ info.testNum}} 门已通过，有 {{ info.failNum }} 门未通过，有 {{ info.noTestNum }} 门尚未考试。\n                    </p>\n                    <p>\n                        gpa: {{ gpa }}，加权平均分：{{ avg_score }}。\n                    </p>\n                </div>\n            </div>\n\n\n            <div class=\"row\" v-for=\"item in scoreList\">\n\n                <div class=\"col-xs-9\">\n                    <strong class=\"info-item\">\n                        {{ item.text }} ：\n                    </strong>\n                </div>\n                <div class=\"col-xs-3\">\n                    {{ item.value }}\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n\n</div>";
 
 /***/ }),
 
@@ -2169,13 +2169,25 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 36:
+/***/ 4:
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(73);
+var content = __webpack_require__(84);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(5)(content, {});
@@ -2193,18 +2205,6 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
 
 /***/ }),
 
@@ -2461,17 +2461,45 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 55:
+/***/ 6:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _grade = __webpack_require__(36);
+var _grade = __webpack_require__(42);
 
 var _grade2 = _interopRequireDefault(_grade);
 
-var _grade3 = __webpack_require__(18);
+var _grade3 = __webpack_require__(21);
 
 var _grade4 = _interopRequireDefault(_grade3);
 
@@ -2506,35 +2534,7 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 73:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
