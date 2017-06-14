@@ -6,6 +6,7 @@ var WechatAPI = require('wechat-api');
 var wechatConfig = require('../config/wechat').config;
 var cryption = require('./cryption');
 var mongodb = require('./mongodb');
+var onlineAddress = require('../config/ipConfig').config.online;
 
 module.exports = function (req, res, next) {
 
@@ -68,7 +69,7 @@ module.exports = function (req, res, next) {
 
                                 // 对openid加密
                                 var encryptOpenid = cryption.enCryption(openid);
-                                var url = 'http://wunan777.ngrok.cc/weixinbind?openId=' + encryptOpenid;
+                                var url = onlineAddress + '/weixinbind?openId=' + encryptOpenid;
 
                                 res.reply({
                                     type: 'text',
@@ -149,7 +150,7 @@ function getBaseInfo(studentId, openid, res, mongodb) {
 
                     var studentInfo = stuRes.data[0];
                     var encryptOpenid = cryption.enCryption(openid);
-                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+                    var cancelUrl = onlineAddress + '/weixinBindUpdate?openId=' + encryptOpenid;
 
                     var content = "基本信息"
                         + "\n"
@@ -209,7 +210,7 @@ function getScore(studentId, openid, res, mongodb) {
 
                     var studentInfo = stuRes.data[0];
                     var encryptOpenid = cryption.enCryption(openid);
-                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+                    var cancelUrl = onlineAddress + '/weixinBindUpdate?openId=' + encryptOpenid;
 
                     var content = "成绩信息"
                         + "\n"
@@ -259,7 +260,7 @@ function getRoom(studentId, openid, res, mongodb) {
                 if (stuRes.data.length > 0) {
                     var studentInfo = stuRes.data[0];
                     var encryptOpenid = cryption.enCryption(openid);
-                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+                    var cancelUrl = onlineAddress + '/weixinBindUpdate?openId=' + encryptOpenid;
 
                     content = "考试安排"
                         + "考场：" + studentInfo.room
@@ -310,7 +311,7 @@ function getCredit(studentId, openid, res, mongodb) {
 
                     var studentInfo = stuRes.data[0];
                     var encryptOpenid = cryption.enCryption(openid);
-                    var cancelUrl = 'http://wunan777.ngrok.cc/weixinBindUpdate?openId=' + encryptOpenid;
+                    var cancelUrl = onlineAddress + '/weixinBindUpdate?openId=' + encryptOpenid;
 
                     content = "学习进度"
                         + "\n"
